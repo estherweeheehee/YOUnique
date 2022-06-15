@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function Main() {
-  const [popular, setPopular] = useState([]);
-  const [trend, setTrend] = useState([]);
+  const [popular, setPopular] = useState({});
+  const [trend, setTrend] = useState({});
 
   
   useEffect(()=>{
