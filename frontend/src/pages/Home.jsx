@@ -3,20 +3,20 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function Main() {
-  const [test, setTest] = useState([]);
-  const [test2, setTest2] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [trend, setTrend] = useState([]);
 
   
   useEffect(()=>{
       fetch("http://example.com/movies.json")
         .then((response) => response.json())
-        .then((data) => setTest(data));
+        .then((data) => setPopular(data));
     },[])
 
   return(
     <div>
       <h3>Popular</h3>
-      {test.map((element)=>{
+      {popular.map((element)=>{
         return(
           <p>{element}</p>
         )
@@ -24,7 +24,7 @@ function Main() {
 
 
       <h3>New</h3>
-      {test2.map((element)=>{
+      {trend.map((element)=>{
         return(
           <p>{element}</p>
         )
