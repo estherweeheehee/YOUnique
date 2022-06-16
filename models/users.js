@@ -8,4 +8,8 @@
     lastname: { type: String, required: true }
  });
 
- module.exports = mongoose.model("Users", usersSchema)
+ const usersDB = mongoose.connection.useDb('Users');
+
+ const Users = usersDB.model('Users', usersSchema);
+
+ module.exports = Users
