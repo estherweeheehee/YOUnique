@@ -6,10 +6,10 @@ const Signup = () => {
         username: "",
         password: "",
         email: "",
-        firstname: "",
-        lastname: "",
-        userpicture: "",
-        userdescription: ""
+        first_name: "",
+        last_name: "",
+        display_pic_url: "",
+        user_description: ""
     })
 
     const handleChange = (event, key) => {
@@ -19,12 +19,22 @@ const Signup = () => {
         })
     }
     
-    const handleSubmitSignup = () => {
-        console.log("click")
+    const handleSubmitSignup = (event) => {
+        
+        event.preventDefault();
+        fetch("/api/user/signup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify( signUp ),
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data));
     }
 
     return (
-        <form onSubmit={handleSubmitSignup}>
+        <form method="post" onSubmit={handleSubmitSignup}>
             <fieldset>
               <legend>Sign Up</legend>
               <label htmlFor="username">Username</label>
@@ -68,8 +78,8 @@ const Signup = () => {
               placeholder="first name"
               name="firstname" 
               id="firstname" 
-              value={signUp.firstname}
-              onChange={() => handleChange(event, "firstname")}
+              value={signUp.first_name}
+              onChange={() => handleChange(event, "first_name")}
               />
               <label htmlFor="lastname">Last Name</label>
               <input className="inputfield" 
@@ -78,8 +88,8 @@ const Signup = () => {
               placeholder="last name"
               name="lastname" 
               id="lastname" 
-              value={signUp.lastname}
-              onChange={() => handleChange(event, "lastname")}
+              value={signUp.last_name}
+              onChange={() => handleChange(event, "last_name")}
               />
 
               <br/>
@@ -90,8 +100,8 @@ const Signup = () => {
               placeholder="enter url of display picture"
               name="userpicture" 
               id="userpicture" 
-              value={signUp.userpicture}
-              onChange={() => handleChange(event, "userpicture")}
+              value={signUp.display_pic_url}
+              onChange={() => handleChange(event, "display_pic_url")}
               />
               <br/>
               <label htmlFor="userdescription">User Description</label>
@@ -101,8 +111,8 @@ const Signup = () => {
               placeholder="enter description of yourself"
               name="userdescription" 
               id="userdescription"
-              value={signUp.userdescription}
-              onChange={() => handleChange(event, "userdescription")}
+              value={signUp.user_description}
+              onChange={() => handleChange(event, "user_description")}
               />
 
               <br/>

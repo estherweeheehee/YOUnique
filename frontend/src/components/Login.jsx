@@ -14,33 +14,43 @@ const Login = () => {
         })
     }
 
-    
-
     const handleSubmitLogin = (event) => {
         event.preventDefault();
-        console.log("click");
+        fetch("/api/user/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(login)
+          })
+            .then((response) => response.json())
+            .then((data) => console.log(data));
     };
         
     return (
-        <form onSubmit={handleSubmitLogin}>
+        <form method="post" onSubmit={handleSubmitLogin}>
             <fieldset>
               <legend>Login</legend>
               <label htmlFor="username">Username</label>
               <input 
               className="inputfield" 
               required 
+              type="text"
+              placeholder="username"
               name="username" 
               id="username" 
-              value={username}
+              value={login.username}
               onChange={() => handleChange(event, "username")}
               />
 
               <label htmlFor="password">Password</label>
               <input className="inputfield" 
               required 
+              type="text"
+              placeholder="password"
               name="password" 
               id="password" 
-              value={password}
+              value={login.password}
               onChange={() => handleChange(event, "password")}
               />
               <button>Login</button>
