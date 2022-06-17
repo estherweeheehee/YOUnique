@@ -5,12 +5,7 @@ import ImgAndDesc from '../components/ImgAndDesc';
 function Feed() {
 
     const [feed, setFeed] = useState({})
-    // useEffect(()=>{
-    //     fetch("http://example.com/movies.json")
-    //       .then((response) => response.json())
-    //       .then((data) => setFeed(data));
-    //   },[])
-
+    
   return (
     <div>
         <div className="container">
