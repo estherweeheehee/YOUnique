@@ -15,3 +15,13 @@
     column-gap: 200px;
 }
 
+
+.login {
+    margin: auto;
+    width:max-content;
+}
+
+.signup {
+    margin: auto;
+    width:max-content;
+}
