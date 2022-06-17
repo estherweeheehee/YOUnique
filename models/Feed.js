@@ -7,8 +7,4 @@ const feedSchema = mongoose.Schema({
    
 });
 
-const feedDB = mongoose.connection.useDb('Feed');
-
-const Feed = feedDB.model('Feed', feedSchema);
-
-module.exports = Feed
+module.exports = mongoose.model("Feed", feedSchema);

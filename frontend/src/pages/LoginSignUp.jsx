@@ -1,7 +1,8 @@
+import Login from "../components/Login";
 import Signup from "../components/Signup";
 
 const LoginSignup = () => {
-  const handleSubmitLogin = () => {};
+  
 
   
 
@@ -9,17 +10,7 @@ const LoginSignup = () => {
     <>
       <div>
         <div className="login">
-          <form onSubmit={handleSubmitLogin}>
-            <fieldset>
-              <legend>Login</legend>
-              <label htmlFor="username">Username</label>
-              <input className="inputfield" required name="username" id="username" />
-
-              <label htmlFor="password">Password</label>
-              <input className="inputfield" name="password" id="password" />
-              <button>Login</button>
-            </fieldset>
-          </form>
+          <Login />
         </div>
 
         <div className="signup">

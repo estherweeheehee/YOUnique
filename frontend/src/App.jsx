@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 import "./App.css";
 import Sell from "./pages/Sell";
 import Feed from "./pages/Feed";
-import LoginSignup from "./pages/LoginSignUp";
+import LoginSignup from "./pages/LoginSignup";
 import Post from "./pages/Post";
 import Main from "./pages/Main";
 import Search from "./pages/Search";
