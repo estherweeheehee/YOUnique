@@ -5,7 +5,14 @@
     password: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     firstname: { type: String, required: true },
-    lastname: { type: String, required: true }
+    lastname: { type: String, required: true },
+    dateofbirth: { }, // to find out syntax for date later
+    image: { type: String },
+    userdescription: { type: String },
+    following: { type: [String] },
+    orderOF: { type: [] },
+    orderMS: { type: [] },
+    subscribers: { type: [String] },
  });
 
  const usersDB = mongoose.connection.useDb('Users');

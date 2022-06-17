@@ -34,6 +34,10 @@ app.get("/api", (req, res) => {
     res.send("hello world")
 })
 
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/dist/index.thml"));
+});
+
 app.listen(port, () => {
     console.log(`server is running on port ${port}`);
 })
