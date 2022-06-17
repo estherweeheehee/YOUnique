@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 
 const usersController = require("./controllers/UsersController");
+const feedController = require("./controllers/FeedController");
+const productsController = require("./controllers/ProductsController");
 
 const app = express();
 const port = process.env.PORT ?? 3000;
@@ -29,13 +31,15 @@ app.use(session({
   }))
 app.use(express.static("./frontend/dist"))
 app.use("/api/users", usersController);
+app.use("/api/feed", feedController);
+app.use("/api/products", productsController);
 
 app.get("/api", (req, res) => {
     res.send("hello world")
 })
 
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./frontend/dist/index.thml"));
+  res.sendFile(path.join(__dirname, "./frontend/dist/index.html"));
 });
 
 app.listen(port, () => {
