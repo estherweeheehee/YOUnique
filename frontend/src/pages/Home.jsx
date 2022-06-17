@@ -1,7 +1,9 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+
 
 function Home() {
   const [popular, setPopular] = useState({});
@@ -46,10 +48,44 @@ function Home() {
       </div>
     <div>
       <h3>Popular</h3>
-      
+      {/* <Splide options={{
+        perPage:4,
+        arrows: false,
+        pagination:false,
+        drag: "free",
+        gap: "rem5",
+      }}> */}
+        {/* .map(()=>{
+          return(
+            <SplideSlide>
+              <Link>
+              OUTPUT HERE
+              </Link>
+            </SplideSlide>
+          </Splide>
+          )
+        }) */}
 
 
       <h3>New</h3>
+
+            {/* <Splide options={{
+        perPage:4,
+        arrows: false,
+        pagination:false,
+        drag: "free",
+        gap: "rem5",
+      }}> */}
+        {/* .map(()=>{
+          return(
+            <SplideSlide>
+              <Link>
+              OUTPUT HERE
+              </Link>
+            </SplideSlide>
+          </Splide>
+          )
+        }) */}
       
 
     </div>
