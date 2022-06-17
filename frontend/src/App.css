@@ -15,7 +15,9 @@
     column-gap: 200px;
 }
 
-
+.leftcolumn {
+    margin-left: 50px;
+}
 .login {
     margin: auto;
     width:max-content;
@@ -28,4 +30,8 @@
 
 .inputfield {
     margin: 10px;
+}
+
+.profilepic {
+    width: 200px;
 }

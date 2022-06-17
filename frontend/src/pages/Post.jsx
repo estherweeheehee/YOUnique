@@ -1,25 +1,13 @@
+import PostComponent from "../components/PostComponent";
+import { useState } from "react";
 
 const Post = () => {
-    const handleSubmit = () => {
-
-    }
-
+  const [state, useState] = useState({})
   return (
     <div className="container">
-      <div className="leftcolumn">
-
-      </div>
+      <div className="leftcolumn"></div>
       <div className="rightcolumn">
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Submit a post</legend>
-            <label htmlFor="post">Post</label>
-            <input required name="post" id="post" />
-            <label htmlFor="image">Image</label>
-            <input name="image" id="image" />
-            <button>Upload post</button>
-          </fieldset>
-        </form>
+        <PostComponent />
       </div>
     </div>
   );

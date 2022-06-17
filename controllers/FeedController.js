@@ -3,6 +3,7 @@ const Feed = require("../models/Feed");
 
 const router = express.Router();
 
+//? GET
 router.get("/", async (req, res) => {
   try {
     const feed = await Feed.find();
@@ -22,6 +23,7 @@ router.get("/:id", async (req, res) => {
   }
   });
 
+  //? POST
 router.post("/", async (req, res) => {
   res.send("success");
 });

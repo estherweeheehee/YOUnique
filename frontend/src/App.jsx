@@ -9,6 +9,7 @@ import LoginSignup from "./pages/LoginSignup";
 import Post from "./pages/Post";
 import Main from "./pages/Main";
 import Search from "./pages/Search";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path={"/login"} element={<LoginSignup />} />
             <Route path={"/post"} element={<Post />} />
             <Route path={"/search/:id"} element={<Search />} />
+            <Route path={"/user/:id"} element={<UserProfile />} />
           </Route>
         </Routes>
       </BrowserRouter>

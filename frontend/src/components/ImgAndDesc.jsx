@@ -1,18 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
-function ImgAndDesc() {
-  // const [state, setState] = useState({});
-  // useEffect(() => {
-  //   fetch("http://example.com/movies.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setState(data));
-  // }, []);
+function ImgAndDesc({ img, description }) {
+  
 
   return (
     <div>
-      <h1>display image</h1>
-      <h1>Description</h1>
+      <p>display image</p>
+      <img className="profilepic" src={img} />
+
+
+      <h5>Description</h5>
+      <p>{description}</p>
+
       {/* <img src={state.img} alt="No profile image" />
       <p>Description {state.description}</p> */}
     </div>
