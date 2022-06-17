@@ -1,9 +1,9 @@
-const Login = () => {
+import Signup from "../components/Signup";
+
+const LoginSignup = () => {
   const handleSubmitLogin = () => {};
 
-  const handleSubmitSignup = () => {
-
-  }
+  
 
   return (
     <>
@@ -13,25 +13,21 @@ const Login = () => {
             <fieldset>
               <legend>Login</legend>
               <label htmlFor="username">Username</label>
-              <input required name="username" id="username" />
+              <input className="inputfield" required name="username" id="username" />
+
               <label htmlFor="password">Password</label>
-              <input name="password" id="password" />
+              <input className="inputfield" name="password" id="password" />
               <button>Login</button>
             </fieldset>
           </form>
         </div>
 
         <div className="signup">
-          <form onSubmit={handleSubmitSignup}>
-            <fieldset>
-              
-            </fieldset>
-
-          </form>
+          <Signup />
         </div>
       </div>
     </>
   );
 };
 
-export default Login;
+export default LoginSignup;

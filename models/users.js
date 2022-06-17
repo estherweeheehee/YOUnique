@@ -6,8 +6,7 @@
     email: { type: String, required: true, unique: true },
     firstname: { type: String, required: true },
     lastname: { type: String, required: true },
-    dateofbirth: { }, // to find out syntax for date later
-    image: { type: String },
+    userpicture: { type: String },
     userdescription: { type: String },
     following: { type: [String] },
     orderOF: { type: [] },
