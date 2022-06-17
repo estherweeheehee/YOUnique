@@ -1,4 +1,3 @@
-import ImgAndDesc from "../components/ImgAndDesc";
 
 const Post = () => {
     const handleSubmit = () => {
@@ -8,9 +7,8 @@ const Post = () => {
   return (
     <div className="container">
       <div className="leftcolumn">
-        <ImgAndDesc />
-      </div>
 
+      </div>
       <div className="rightcolumn">
         <form onSubmit={handleSubmit}>
           <fieldset>

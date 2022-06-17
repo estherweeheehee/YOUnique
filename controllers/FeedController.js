@@ -13,13 +13,13 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-    try {
-        const {id} = req.params
-      const feed = await Feed.FindById(id);
-      res.send(feed);
-    } catch (error) {
-      res.send(error);
-    }
+  try{
+    const {id} = req.params
+    const feed = await Feed.findById(id)
+    res.send(feed)
+  }catch(error){
+      res.send(error)
+  }
   });
 
 router.post("/", async (req, res) => {
