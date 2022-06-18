@@ -21,6 +21,7 @@ router.post("/login", async (req, res) => {
     const { username, password } = req.body;
     try {
         const checkUser = await User.findOne({ username: username, password: password})
+        req.session.username = username;
         res.send(checkUser)
     } catch (error) {
         res.send(error)

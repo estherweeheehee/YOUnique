@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "../App";
 
 const Login = () => {
+  const [user, setUser] = useAtom(userAtom);
+
     const [login, setLogin] = useState({
         username: "",
         password: ""
@@ -24,7 +28,7 @@ const Login = () => {
             body: JSON.stringify(login)
           })
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => setUser(data));
     };
         
     return (

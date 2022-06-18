@@ -10,6 +10,10 @@ import Post from "./pages/Post";
 import Main from "./pages/Main";
 import Search from "./pages/Search";
 import UserProfile from "./pages/UserProfile";
+import {atom} from "jotai"
+import MySales from "./pages/MySales";
+
+export const userAtom = atom({})
 
 function App() {
   return (
@@ -24,6 +28,7 @@ function App() {
             <Route path={"/post"} element={<Post />} />
             <Route path={"/search/:id"} element={<Search />} />
             <Route path={"/user/:id"} element={<UserProfile />} />
+            <Route path={"/mysales"} element={<MySales />} />
           </Route>
         </Routes>
       </BrowserRouter>
