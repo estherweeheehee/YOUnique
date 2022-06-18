@@ -25,7 +25,13 @@ router.get("/:id", async (req, res) => {
 
   //? POST
 router.post("/", async (req, res) => {
-  res.send("success");
+  try{
+    const feed = await Feed.create(req.body)
+    res.send(feed)
+  }catch(error){
+    res.send(error)
+  }
+  
 });
 
 module.exports = router;

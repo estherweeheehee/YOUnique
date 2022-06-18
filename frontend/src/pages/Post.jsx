@@ -2,12 +2,16 @@ import PostComponent from "../components/PostComponent";
 import { useState } from "react";
 
 const Post = () => {
-  const [state, useState] = useState({})
+  const [post, setPost] = ([])
+
+  // search by find(userId)
+
   return (
     <div className="container">
       <div className="leftcolumn"></div>
       <div className="rightcolumn">
-        <PostComponent />
+        <PostComponent/>
+        
       </div>
     </div>
   );

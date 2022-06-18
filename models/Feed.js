@@ -7,7 +7,8 @@ const feedSchema = mongoose.Schema({
         type: Date,
         immutable: true,
         default: () => Date.now()
-    }
+    },
+    userId: String
 });
 
 module.exports = mongoose.model("Feed", feedSchema);

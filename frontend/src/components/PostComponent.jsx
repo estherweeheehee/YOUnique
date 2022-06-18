@@ -3,16 +3,19 @@ import React from "react";
 function Post() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("/holidays", {
+    fetch("/api/feed", {
       method: "POST",
-      body: JSON.stringify({ name: event.target.name.value }),
+      body: JSON.stringify({
+        post: event.target.post.value,
+        Image_url: event.target.image.value,
+      }),
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((res) => res.json())
-      .then((resJson) => {
-        props.handleAddPost(resJson);
+      .then((data) => {
+        console.log(data);
       })
       .catch((error) => console.error({ Error: error }));
   };
