@@ -16,7 +16,8 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try{
     const {id} = req.params
-    const feed = await Feed.findById(id)
+    const feed = await Feed.find({userId: id})
+    console.log(feed)
     res.send(feed)
   }catch(error){
       res.send(error)
@@ -33,5 +34,29 @@ router.post("/", async (req, res) => {
   }
   
 });
+
+//? Delete
+router.delete("/:id", async (req,res)=>{
+  try{
+    const {id} = req.params
+    const feed = await Feed.findByIdAndDelete(id)
+    res.send(feed)
+  }catch(error){
+    res.send(error)
+  }
+})
+
+ //? Update
+router.put('/:id', async (req,res)=>{
+  try{
+    const {id} = req.params
+    const feed = await Feed.findByIdAndUpdate(id, req.body, 
+      {new: true})
+
+    res.send(feed)
+  }catch(error){
+    res.send(error)
+  }
+})
 
 module.exports = router;
