@@ -5,7 +5,6 @@ import ImgAndDesc from "../components/ImgAndDesc";
 
 
 function Sell() {
-
     // const [state,setState] = useState({})
 
     // useEffect(() => {
