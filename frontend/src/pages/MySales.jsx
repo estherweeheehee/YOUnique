@@ -1,24 +1,37 @@
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import SingleOrder from "../components/SingleOrder";
+import SubscriptionOrder from "../components/SubscriptionOrder";
 
 const MySales = () => {
   const [user, setUser] = useAtom(userAtom);
+  const [view, setView] = useState("single")
   let navigate = useNavigate();
 
   if (user.username === undefined) {
     navigate("/login");
   } 
 
-
-  
+  const handleView = () => {
+    if (view === "single") {
+      setView("subscription")
+    } else {
+      setView("single")
+    }
+  };
 
 
   return (
     <>
         <h1> my sales</h1>
-        {/* {user.sales_order_one_off[0]} */}
-
+        <button onClick={handleView}>View single orders</button>
+        <button onClick={handleView}>View subscription orders</button>
+        <br />
+        <br />
+        {view === "single" ? <SingleOrder /> : <SubscriptionOrder />}
+        
     </>
   
   

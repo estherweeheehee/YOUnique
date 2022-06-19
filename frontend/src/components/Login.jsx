@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useAtom(userAtom);
+  let navigate = useNavigate();
 
     const [login, setLogin] = useState({
         username: "",
@@ -29,6 +31,7 @@ const Login = () => {
           })
             .then((response) => response.json())
             .then((data) => setUser(data));
+        navigate("/")
     };
         
     return (

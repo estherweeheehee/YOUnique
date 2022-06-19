@@ -35,3 +35,12 @@
 .profilepic {
     width: 200px;
 }
+
+.OrderBox {
+    background-color: darkgray;
+    width: 50vw;
+}
+
+.OrderInput {
+    margin: 10px;
+}

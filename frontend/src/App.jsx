@@ -12,8 +12,7 @@ import Search from "./pages/Search";
 import UserProfile from "./pages/UserProfile";
 import {atom} from "jotai"
 import MySales from "./pages/MySales";
-import UserPost from "./components/UserPost";
-import UserProduct from "./components/UserProduct";
+
 
 export const userAtom = atom({})
 
