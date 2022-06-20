@@ -29,6 +29,7 @@ function App() {
               <Route path={"/search/:id"} element={<Search />} />
             </Route>
             <Route path={"/sell"} element={<Sell />} />
+            <Route path={"/sell/:id"} element={<Product />} />
             <Route path={"/feed"} element={<Feed />} />
             <Route path={"/login"} element={<LoginSignup />} />
             <Route path={"/post/"} element={<Post />} />

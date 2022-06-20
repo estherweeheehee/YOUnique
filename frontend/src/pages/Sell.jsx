@@ -17,8 +17,6 @@ function Sell() {
         .then((data) => setProduct(data))
     }, []);
     
-
-
     //   const handleEdit = (event)=>{
     //     const id = {
     //       id: event.target.element // .something
@@ -62,9 +60,13 @@ function Sell() {
             <div key={product._id}>
               <Link to={"/product/" + product._id}>
                 <img src={product.product_image} alt="" />
-              </Link>
               <p>{product.product_name}</p>
+              <p>{product.product_category}</p>
+              <p>{product.product_description}</p>
+              <p>{product.product_price_one_off}</p>
+              <p>{product.product_price_subscription}</p>
               <p>{product.product_listed_date}</p>
+              </Link>
             </div>
           ))}
         </div>
