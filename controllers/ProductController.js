@@ -45,6 +45,17 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Read Route - by category and limit the results
+router.get("/category/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+      const product = await Product.find({product_category: id}).limit(4)
+      res.send(product)
+  } catch (error) {
+      console.log(error)
+  }
+});
+
 // Update Route
 router.put("/:id", async (req, res) => {
     const { id } = req.params;

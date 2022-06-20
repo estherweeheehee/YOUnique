@@ -5,12 +5,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import ProductCarousell from "./ProductCarousell";
 import { Outlet } from "react-router-dom";
+import ProductCategory from "../components/ProductCategory";
 
 
 function Home() {
-  
-
   const [searchTerm, setSearchTerm] = useState("")
+  const [bakedGoods, setBakedGoods] = useState([])
+  const [jewellery, setJewellery] = useState([])
   let navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -22,6 +23,21 @@ function Home() {
     navigate(`/search/${searchTerm}`)
     setSearchTerm("")
   }
+  
+  const product_category = ["Baked Goods","Jewellery"]
+
+  useEffect(() => {
+    fetch(`/api/product/category/${product_category[0]}`)
+      .then((response) => response.json())
+      .then((data) => setBakedGoods(data));
+  }, []);
+
+  useEffect(() => {
+    fetch(`/api/product/category/${product_category[1]}`)
+      .then((response) => response.json())
+      .then((data) => setJewellery(data));
+  }, []);
+
   return(
     <>
     <div className="search">
@@ -40,8 +56,9 @@ function Home() {
           </fieldset>
         </form>
       </div>
-      
     <Outlet />
+    <ProductCategory productdata={bakedGoods}/>
+    <ProductCategory productdata={jewellery}/>
     </>
     ) 
 }
