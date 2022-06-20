@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
 
 const feedSchema = mongoose.Schema({
     post: String,
@@ -6,9 +8,9 @@ const feedSchema = mongoose.Schema({
     date: {
         type: Date,
         immutable: true,
-        default: () => Date.now()
+        default: () => Date.now(),
     },
-    userId: String
+    userid: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model("Feed", feedSchema);

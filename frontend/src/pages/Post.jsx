@@ -3,18 +3,19 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useReducer } from "react";
 import EditForm from "../components/EditForm";
+import { useAtom } from "jotai";
+import { userAtom } from "../App";
 
 const Post = () => {
+  const [user, setUser] = useAtom(userAtom);    
   const [post, setPost] = useState([]);
   const [edit, setEdit] = useState(-1);
-
-  let params = useParams();
 
 
 
   //? Fetch
   useEffect(() => {
-    fetch(`/api/feed/${params.id}`)
+    fetch(`/api/feed/${user._id}`)
       .then((response) => response.json())
       .then((data) => setPost(data));
   }, []);
@@ -28,17 +29,19 @@ const Post = () => {
   //? Edit
   const handleEdit = (id) => {
     setEdit(id);
+    
   };
-
+  // console.log(user)
   return (
     <div className="container">
       <div className="leftcolumn"></div>
       <div className="rightcolumn">
+        <p>{user._id}</p>
         <PostComponent />
-        {post.map((post) => {
+        {post?.map((post) => {
           return (
             <div key={post._id}>
-              {edit === post._id ? <EditForm post={post}/> : <p>{post.post}</p>}
+              {edit === post._id ? <EditForm post={post} setEdit={setEdit}/> : <p>{post.post}</p>}
               <img src={post.Image_url} alt="" />
               <p>{post.date}</p>
               <button onClick={() => handleDelete(post._id)}>Delete</button>

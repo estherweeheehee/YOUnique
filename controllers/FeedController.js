@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try{
     const {id} = req.params
-    const feed = await Feed.find({userId: id})
+    const feed = await Feed.find({userid: id})
     console.log(feed)
     res.send(feed)
   }catch(error){
@@ -49,10 +49,10 @@ router.delete("/:id", async (req,res)=>{
  //? Update
 router.put('/:id', async (req,res)=>{
   try{
+    // console.log(req.body)
     const {id} = req.params
-    const feed = await Feed.findByIdAndUpdate(id, req.body, 
-      {new: true})
-
+    const feed = await Feed.findOneAndUpdate({_id: id },req.body, {new: true} )
+    console.log(feed)
     res.send(feed)
   }catch(error){
     res.send(error)
