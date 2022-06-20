@@ -1,32 +1,43 @@
 import React from "react";
-import {useState} from "react"
+import { useState } from "react";
 
-function EditForm({post, setEdit}) {
-  const [update, setUpdate] = useState(post.post);
+function EditForm({ singlePost, post, setEdit, setPost }) {
+  const [update, setUpdate] = useState(singlePost.post);
 
+  const resetPosts = () => {
+    const pos = post.findIndex((item) => item._id === singlePost._id);
+
+    setPost([
+      ...post.slice(0, pos),
+      { ...singlePost, post: update },
+      ...post.slice(pos + 1),
+    ]);
+  };
   const handleClick = () => {
-   useEffect
-    fetch(`/api/feed/${post._id}`, {
+    // console.log("update", update);
+
+    fetch(`/api/feed/${singlePost._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ post : update }),
+      body: JSON.stringify({ ...singlePost, post: update }),
     })
       .then((response) => response.json())
       .then((data) => console.log(data));
-      setEdit
+    resetPosts();
+    setEdit(-1);
   };
-  // const replacePost = (para) => {
-  //   const pos = post.findIndex((p) => p._id === para._id);
-  //   setPost([...post.slice(0, pos), para, ...post.slice(pos + 1)]);
-  // };
+
   return (
     <div>
-    <input onChange={(event) => setUpdate(event.target.value)} value={update} />
-    <button onClick={handleClick}>Change</button>
-  </div>
-);
+      <input
+        onChange={(event) => setUpdate(event.target.value)}
+        value={update}
+      />
+      <button onClick={handleClick}>Change</button>
+    </div>
+  );
 }
 
 export default EditForm;

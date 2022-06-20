@@ -37,15 +37,15 @@ const Post = () => {
       <div className="leftcolumn"></div>
       <div className="rightcolumn">
         <p>{user._id}</p>
-        <PostComponent />
-        {post?.map((post) => {
+        <PostComponent setPost={setPost} post={post}/>
+        {post?.map((singlePost, index) => {
           return (
-            <div key={post._id}>
-              {edit === post._id ? <EditForm post={post} setEdit={setEdit}/> : <p>{post.post}</p>}
-              <img src={post.Image_url} alt="" />
-              <p>{post.date}</p>
-              <button onClick={() => handleDelete(post._id)}>Delete</button>
-              <button onClick={() => handleEdit(post._id)}>Edit</button>
+            <div key={index}>
+              {edit === singlePost._id ? <EditForm singlePost={singlePost} post={post} setPost={setPost} setEdit={setEdit}/> : <p>{singlePost.post}</p>}
+              <img src={singlePost.Image_url} alt="" />
+              <p>{singlePost.date}</p>
+              <button onClick={() => handleDelete(singlePost._id)}>Delete</button>
+              <button onClick={() => handleEdit(singlePost._id)}>Edit</button>
             </div>
           );
         })}

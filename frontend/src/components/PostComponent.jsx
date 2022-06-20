@@ -1,11 +1,14 @@
 import React from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import {useState} from 'react'
 
-function Post() {
+function Post({setPost, post}) {
   const [user, setUser] = useAtom(userAtom);    
+  const [newPost, setNewPost] = useState([])
 
   const handleSubmit = (event) => {
+    
     event.preventDefault();
     fetch("/api/feed", {
       method: "POST",
@@ -20,9 +23,10 @@ function Post() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setPost([data, ...post])
       })
       .catch((error) => console.error({ Error: error }));
+      
   };
   return (
     <div>
