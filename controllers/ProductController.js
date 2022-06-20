@@ -34,6 +34,17 @@ router.get("/user/:userid", async (req, res) => {
   }
 });
 
+// Read Route - by productid
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+      const product = await Product.find({_id: id})
+      res.send(product)
+  } catch (error) {
+      console.log(error)
+  }
+});
+
 // Update Route
 router.put("/:id", async (req, res) => {
     const { id } = req.params;

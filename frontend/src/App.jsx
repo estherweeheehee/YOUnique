@@ -14,6 +14,7 @@ import {atom} from "jotai"
 import MySales from "./pages/MySales";
 import ProductCarousell from "./pages/ProductCarousell";
 import MyPurchase from "./pages/MyPurchase";
+import Product from "./pages/Product";
 
 
 export const userAtom = atom({})
