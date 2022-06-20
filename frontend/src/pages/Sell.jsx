@@ -4,6 +4,7 @@ import { userAtom } from "../App";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ImgAndDesc from "../components/ImgAndDesc";
+import CreateProductForm from "../components/CreateProductForm";
 
 
 function Sell() {
@@ -17,6 +18,11 @@ function Sell() {
         .then((data) => setProduct(data))
     }, []);
     
+    // Update product
+    const updateProduct = (productdetails) => {
+      setProduct([...product, productdetails])
+    }
+
     //   const handleEdit = (event)=>{
     //     const id = {
     //       id: event.target.element // .something
@@ -50,6 +56,7 @@ function Sell() {
   return (
     <div>
       <h1>Esther please insert user profile img as a map</h1>
+      <CreateProductForm updateProduct={updateProduct} />
       <div className="container">
         <div className="leftColumn">
         <ImgAndDesc />
