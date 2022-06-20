@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import { atomWithStorage, RESET } from 'jotai/utils'
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [user, setUser] = useAtom(userAtom);
+  
   let navigate = useNavigate();
 
     const [login, setLogin] = useState({

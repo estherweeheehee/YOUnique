@@ -1,8 +1,10 @@
 const express = require("express");
-const { rawListeners, findById } = require("../models/User");
 const User = require("../models/User");
+const bcrypt = require("bcrypt")
+const { hashSync } = require("bcrypt");
 
 const router = express.Router();
+const saltRounds = bcrypt.genSaltSync(10);
 
 router.get("/", async (req, res) => {
   res.send("success");
@@ -10,7 +12,10 @@ router.get("/", async (req, res) => {
 
 router.post("/signup", async (req, res) => {
   try {
-    const user = await User.create(req.body);
+    const newUser = {...req.body,
+        password:  bcrypt.hashSync(req.body.password, saltRounds)
+    }
+    const user = await User.create(newUser);
     req.session.username = req.body.username;
     res.send(user);
   } catch (error) {
@@ -21,12 +26,19 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
   try {
-    const checkUser = await User.findOne({
-      username: username,
-      password: password,
-    });
-    req.session.username = username;
-    res.send(checkUser);
+    // const checkUser = await User.findOne({
+    //   username: username,
+    //   password: password,
+    // });
+    const checkUser = await User.findOne({username});
+    if (checkUser === null) {
+        res.send({status: "fail", data: "No such user"})
+    } else {
+        if (bcrypt.compareSync(password, checkUser.password)) {
+            req.session.username = username;
+            res.send(checkUser);
+        }
+    }
   } catch (error) {
     res.send(error);
   }

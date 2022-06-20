@@ -43,7 +43,7 @@ function Product() {
             body: JSON.stringify( order ),
           })
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => setUser(data));
     }
   return(
     <div>
