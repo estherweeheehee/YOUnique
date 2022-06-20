@@ -1,23 +1,22 @@
 import React from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
 import ImgAndDesc from "../components/ImgAndDesc";
 
 
 function Sell() {
     const [user, setUser] = useAtom(userAtom);    
-    const { id } = useParams();
-    const [product, setProduct] = useState("")
-    // const [state,setState] = useState({})
-    //? Fetch
+    const [product, setProduct] = useState([])
+    
+    // initial Fetch
     useEffect(() => {
-      fetch(`/api/feed/user/${id}`)
+      fetch(`/api/product/user/${user._id}`)
         .then((response) => response.json())
-        .then((data) => setProduct(data));
+        .then((data) => setProduct(data))
     }, []);
-
+    
     //   const handleEdit = (event)=>{
     //     const id = {
     //       id: event.target.element // .something
@@ -49,16 +48,28 @@ function Sell() {
     //   }
 
   return (
-    <>
+    <div>
+      <h1>Esther please insert user profile img as a map</h1>
       <div className="container">
         <div className="leftColumn">
         <ImgAndDesc />
         </div>
         <div className="rightColumn">
-          
-          <h1>
-            Multiple items
-          </h1>
+        <div>
+          {product.map((product) => (
+            <div key={product._id}>
+              <Link to={"/sell/" + product._id}>
+                <img src={product.product_image} alt={product.product_name} />
+              <p>{product.product_name}</p>
+              <p>{product.product_category}</p>
+              <p>{product.product_description}</p>
+              <p>{product.product_price_one_off}</p>
+              <p>{product.product_price_subscription}</p>
+              <p>{product.product_listed_date}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
         </div>
 
       </div>
@@ -77,7 +88,7 @@ function Sell() {
       })} */}
       
 
-    </>
+    </div>
   );
 }
 
