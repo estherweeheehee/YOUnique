@@ -7,6 +7,7 @@ const Search = () => {
     return (
         <>
             <div>
+                
                 <h1>Search Result</h1>
                 <p>You searched for "{term}"</p>
             </div>

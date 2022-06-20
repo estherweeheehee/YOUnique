@@ -3,21 +3,17 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import ProductCarousell from "./ProductCarousell";
+import { Outlet } from "react-router-dom";
 
 
 function Home() {
-  const [popular, setPopular] = useState({});
-  const [trend, setTrend] = useState({});
+  
 
   const [searchTerm, setSearchTerm] = useState("")
   let navigate = useNavigate();
 
   
-  // useEffect(()=>{
-  //     fetch("http://example.com/movies.json")
-  //       .then((response) => response.json())
-  //       .then((data) => setPopular(data));
-  //   },[])
 
   const handleChange = (event) => {
     setSearchTerm(event.target.value)
@@ -26,6 +22,7 @@ function Home() {
   const handleSubmit = (event) => {
     event.preventDefault()
     navigate(`/search/${searchTerm}`)
+    setSearchTerm("")
   }
   return(
     <>
@@ -46,49 +43,7 @@ function Home() {
         </form>
        
       </div>
-    <div>
-      <h3>Popular</h3>
-      {/* <Splide options={{
-        perPage:4,
-        arrows: false,
-        pagination:false,
-        drag: "free",
-        gap: "rem5",
-      }}> */}
-        {/* .map(()=>{
-          return(
-            <SplideSlide>
-              <Link>
-              OUTPUT HERE
-              </Link>
-            </SplideSlide>
-          </Splide>
-          )
-        }) */}
-
-
-      <h3>New</h3>
-
-            {/* <Splide options={{
-        perPage:4,
-        arrows: false,
-        pagination:false,
-        drag: "free",
-        gap: "rem5",
-      }}> */}
-        {/* .map(()=>{
-          return(
-            <SplideSlide>
-              <Link>
-              OUTPUT HERE
-              </Link>
-            </SplideSlide>
-          </Splide>
-          )
-        }) */}
-      
-
-    </div>
+    <Outlet />
     </>
     ) 
 }

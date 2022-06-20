@@ -13,6 +13,7 @@ router.post("/signup", async (req, res) => {
         const user = await User.create(req.body)
         res.send(user)
     } catch (error) {
+        
         res.send(error);
     }
   });

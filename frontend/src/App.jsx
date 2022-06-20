@@ -12,6 +12,7 @@ import Search from "./pages/Search";
 import UserProfile from "./pages/UserProfile";
 import {atom} from "jotai"
 import MySales from "./pages/MySales";
+import ProductCarousell from "./pages/ProductCarousell";
 
 
 export const userAtom = atom({})
@@ -22,12 +23,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={"/"} element={<Main />}>
-            <Route path={"/"} element={<Home />} />
+            <Route path={"/"} element={<Home />}>
+              <Route path={"/"} element={<ProductCarousell />} />
+              <Route path={"/search/:id"} element={<Search />} />
+            </Route>
             <Route path={"/sell"} element={<Sell />} />
             <Route path={"/feed"} element={<Feed />} />
             <Route path={"/login"} element={<LoginSignup />} />
             <Route path={"/post/:id"} element={<Post />} />
-            <Route path={"/search/:id"} element={<Search />} />
+            
             <Route path={"/user/:id"} element={<UserProfile />} />
             <Route path={"/mysales"} element={<MySales />} />
           </Route>
