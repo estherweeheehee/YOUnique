@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 
-function Product() {
+function ProductBackup() {
     const { id } = useParams();
     const [product, setProduct] = useState([])
     const [quantity, setQuantity] = useState("")
@@ -81,4 +81,4 @@ function Product() {
     ) 
 }
 
-export default Product;
+export default ProductBackup;

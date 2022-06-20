@@ -1,5 +1,5 @@
 const express = require("express");
-const { rawListeners } = require("../models/User");
+const { rawListeners, findById } = require("../models/User");
 const User = require("../models/User");
 
 const router = express.Router();
@@ -116,6 +116,30 @@ router.put("/settings/:id", async (req, res) => {
             res.send({status: "success"})
         } catch (error) {
             res.send({error: error})
+        }
+    }
+  })
+
+  router.post("/buy/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!req.session.username) {
+        res.send({status: "fail", data: "No access"});
+    } else {
+        try {
+            if (req.body.orderId.orderType === "OF") {
+                const updatedUser = await User.findByIdAndUpdate(id, {$push: {sales_order_one_off: req.body}} , {
+                    new: true,
+                  });
+                  res.send(updatedUser)
+            } else {
+                const updatedUser = await User.findByIdAndUpdate(id, {$push: {sales_order_subscription: req.body}} , {
+                    new: true,
+                  });
+                  res.send(updatedUser)
+            }
+            
+        } catch(error) {
+            res.send(error)
         }
     }
   })
