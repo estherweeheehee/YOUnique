@@ -31,7 +31,7 @@ function App() {
             <Route path={"/sell"} element={<Sell />} />
             <Route path={"/feed"} element={<Feed />} />
             <Route path={"/login"} element={<LoginSignup />} />
-            <Route path={"/post/:id"} element={<Post />} />
+            <Route path={"/post/"} element={<Post />} />
             <Route path={"/user/:id"} element={<UserProfile />} />
             <Route path={"/mysales"} element={<MySales />} />
             <Route path={"/mypurchase"} element={<MyPurchase />} />
