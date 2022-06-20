@@ -73,28 +73,14 @@ function Sell() {
               <p>{product.product_price_one_off}</p>
               <p>{product.product_price_subscription}</p>
               <p>{product.product_listed_date}</p>
+              <button onClick>Edit</button>
+              <button onClick>Delete</button>
               </Link>
             </div>
           ))}
         </div>
         </div>
-
       </div>
-      {/* <ImgAndDesc />
-      {state.map((items)=>{
-        return(
-          <div>
-          <Link to={"/product/" + items.id}>
-              <img src={items.image} alt="No Image" />
-          </Link>
-              <button onClick={handleEdit}>Edit</button>
-              <button onClick={handleDelete}>Delte</button>
-          </div>
-          
-        )
-      })} */}
-      
-
     </div>
   );
 }
