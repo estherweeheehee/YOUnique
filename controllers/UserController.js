@@ -91,14 +91,32 @@ router.put("/settings/:id", async (req, res) => {
 
   router.delete("/settings/:id", async (req, res) => {
     const { id } = req.params;
-    try {
-      const deletedUser = await User.findByIdAndRemove(id);
-      res.send(deletedUser);
-    } catch (error) {
-    //   res.json({ error: error });
-    res.send({error: error})
+    if (!req.session.username) {
+        res.send({status: "fail", data: "No access"});
+    } else {
+        try {
+            const deletedUser = await User.findByIdAndRemove(id);
+            req.session.destroy();
+            res.send(deletedUser);
+          } catch (error) {
+          //   res.json({ error: error });
+          res.send({error: error})
+          }
     }
-  
+  })
+
+  router.get("/logout", async (req, res) => {
+    
+    if (!req.session.username) {
+        res.send({status: "fail", data: "No access"});
+    } else {
+        try {
+            req.session.destroy();
+            res.send({status: "success"})
+        } catch (error) {
+            res.send({error: error})
+        }
+    }
   })
 
 module.exports = router;
