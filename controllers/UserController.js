@@ -1,4 +1,5 @@
 const express = require("express");
+const { rawListeners } = require("../models/User");
 const User = require("../models/User");
 
 const router = express.Router();
@@ -69,5 +70,23 @@ router.get("/mypurchase/:id", async (req, res) => {
         }
   }
 });
+
+router.put("/settings/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!req.session.username) {
+        res.send({status: "fail", data: "No access"});
+    } else {
+        try {
+            const updatedUser = await User.findByIdAndUpdate(id, req.body, {
+              new: true,
+            });
+            res
+              .send(updatedUser);
+          } catch (error) {
+            res.send(error);
+          }
+    }
+    
+  });
 
 module.exports = router;

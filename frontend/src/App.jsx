@@ -15,6 +15,7 @@ import MySales from "./pages/MySales";
 import ProductCarousell from "./pages/ProductCarousell";
 import MyPurchase from "./pages/MyPurchase";
 import Product from "./pages/Product";
+import Settings from "./pages/Settings";
 
 
 export const userAtom = atom({})
@@ -37,6 +38,7 @@ function App() {
             <Route path={"/user/:id"} element={<UserProfile />} />
             <Route path={"/mysales"} element={<MySales />} />
             <Route path={"/mypurchase"} element={<MyPurchase />} />
+            <Route path={"/settings"} element={<Settings />} />
           </Route>
         </Routes>
       </BrowserRouter>

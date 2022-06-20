@@ -12,12 +12,18 @@ function NavBar() {
       <Link to="/sell">Sell Item</Link>
       <Link to="/feed">Feed</Link>
       <Link to="/post">Post/Update</Link>
-      <Link to="/login">Sign up/ Login</Link>
+      {user?.["username"] !== undefined ? (
+        <Link to="/signout">Log Out</Link>
+      ) : ( <Link to="/login">Sign up/ Login</Link>)
+    
+    }
+      
       
       {user?.["username"] !== undefined ? (
             <>
                 <Link to="/mysales">My Sales</Link>
                 <Link to="/mypurchase">My Purchase</Link>
+                <Link to="/settings">Settings</Link>
             </>
             ) : null}
 
