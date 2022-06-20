@@ -1,17 +1,21 @@
 import React from "react";
+import { useAtom } from "jotai";
+import { userAtom } from "../App";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ImgAndDesc from "../components/ImgAndDesc";
 
 
 function Sell() {
+    const [user, setUser] = useAtom(userAtom);    
     // const [state,setState] = useState({})
 
-    // useEffect(() => {
-    //     fetch("http://example.com/movies.json")
-    //       .then((response) => response.json())
-    //       .then((data) => setState(data));
-    //   }, []);
+    //? Fetch
+    useEffect(() => {
+      fetch(`/api/feed/user/${params.id}`)
+        .then((response) => response.json())
+        .then((data) => setPost(data));
+    }, []);
 
     //   const handleEdit = (event)=>{
     //     const id = {

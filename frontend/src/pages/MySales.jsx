@@ -9,7 +9,7 @@ const MySales = () => {
   const [user, setUser] = useAtom(userAtom);
   const [view, setView] = useState("single")
   let navigate = useNavigate();
-
+  
   if (user.username === undefined) {
     navigate("/login");
   } 

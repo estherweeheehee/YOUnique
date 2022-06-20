@@ -10,7 +10,7 @@ const productSchema = mongoose.Schema({
     product_price_subscription: { type: Number, required: true },
     product_listed_date: { type: Date, immutable: true, default: () => Date.now() },
     product_posted_by_userId: { type: String, required: true },
-    user: { type: Schema.Types.ObjectId, ref: 'User' }
+    userid: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 module.exports = mongoose.model("Product", productSchema);
