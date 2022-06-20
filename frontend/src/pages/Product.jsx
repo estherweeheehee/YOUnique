@@ -21,7 +21,8 @@ function Product() {
         <p>{product[0]?.product_price_one_off}</p>
         <p>{product[0]?.product_price_subscription}</p>
         <p>{product[0]?.product_listed_date}</p>
-        <button>Add to Cart</button>
+        <button>Purchase</button>
+        <button>Subscribe</button>
     </div>
     ) 
 }
