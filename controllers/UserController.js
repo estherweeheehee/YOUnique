@@ -89,4 +89,15 @@ router.put("/settings/:id", async (req, res) => {
     
   });
 
+  router.delete("/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const deletedHoliday = await Holidays.findByIdAndRemove(id);
+      res.status(StatusCodes.OK).send(deletedHoliday);
+    } catch (error) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error });
+    }
+  
+  })
+
 module.exports = router;
