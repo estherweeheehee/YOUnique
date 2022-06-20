@@ -11,6 +11,7 @@ router.get("/", async (req, res) => {
 router.post("/signup", async (req, res) => {
   try {
     const user = await User.create(req.body);
+    req.session.username = req.body.username;
     res.send(user);
   } catch (error) {
     res.send(error);
