@@ -61,7 +61,7 @@ router.get("/view/:id", async (req, res) => {
   }
 });
 
-router.get("/mypurchase/:id", async (req, res) => {
+router.get("/mypurchase/OF/:id", async (req, res) => {
   const { id } = req.params;
   if (!req.session.username) {
     res.send({status: "fail", data: "No access"});
@@ -83,6 +83,29 @@ router.get("/mypurchase/:id", async (req, res) => {
         }
   }
 });
+
+router.get("/mypurchase/MS/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!req.session.username) {
+      res.send({status: "fail", data: "No access"});
+    } else {
+          try {
+          const users = await User.find({ "sales_order_subscription.buyerId": id });
+  
+          const result = [];
+          users.forEach((element) => {
+              element["sales_order_subscription"].forEach((item) => {
+              if (item["buyerId"] === id) {
+                  result.push(item);
+              }
+              });
+          });
+          res.send(result);
+          } catch (error) {
+          res.send(error);
+          }
+    }
+  });
 
 router.put("/settings/:id", async (req, res) => {
     const { id } = req.params;

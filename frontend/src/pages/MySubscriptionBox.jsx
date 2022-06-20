@@ -1,6 +1,6 @@
-const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, productId, qty, status}) => {
+const MySubscriptionBox = ({ orderType, orderNum, price, productName, subscriptionDate, productId, qty, status}) => {
     
-    const cost = parseInt(price) * parseInt(qty)
+    
     return (
         <>
             <div className="OrderBox">
@@ -9,8 +9,8 @@ const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, 
                 <p className="OrderInput">Product Name: {productName}</p>
                 <p className="OrderInput">Product ID: {productId}</p>
                 
-                <p className="OrderInput">Amount paid: ${cost}</p> 
-                <p className="OrderInput">Date of Purchase: {purchaseDate}</p>
+                <p className="OrderInput">Monthly cost: ${price}</p> 
+                <p className="OrderInput">Date of Subscription: {subscriptionDate}</p>
                 
                 
                 <p className="OrderInput">Status: {status}</p>
@@ -20,4 +20,4 @@ const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, 
     )
 }
 
-export default MyPurchaseBox
+export default MySubscriptionBox
