@@ -89,13 +89,14 @@ router.put("/settings/:id", async (req, res) => {
     
   });
 
-  router.delete("/:id", async (req, res) => {
+  router.delete("/settings/:id", async (req, res) => {
     const { id } = req.params;
     try {
-      const deletedHoliday = await Holidays.findByIdAndRemove(id);
-      res.status(StatusCodes.OK).send(deletedHoliday);
+      const deletedUser = await User.findByIdAndRemove(id);
+      res.send(deletedUser);
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error });
+    //   res.json({ error: error });
+    res.send({error: error})
     }
   
   })
