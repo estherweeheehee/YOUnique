@@ -15,8 +15,13 @@ function NavBar() {
       <Link to="/login">Sign up/ Login</Link>
       
       {user?.["username"] !== undefined ? (
-              <Link to="/mysales">My Sales</Link>
+            <>
+                <Link to="/mysales">My Sales</Link>
+                <Link to="/mypurchase">My Purchase</Link>
+            </>
             ) : null}
+
+    
       </div>
       
     

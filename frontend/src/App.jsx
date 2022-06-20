@@ -13,6 +13,7 @@ import UserProfile from "./pages/UserProfile";
 import {atom} from "jotai"
 import MySales from "./pages/MySales";
 import ProductCarousell from "./pages/ProductCarousell";
+import MyPurchase from "./pages/MyPurchase";
 
 
 export const userAtom = atom({})
@@ -31,9 +32,9 @@ function App() {
             <Route path={"/feed"} element={<Feed />} />
             <Route path={"/login"} element={<LoginSignup />} />
             <Route path={"/post/:id"} element={<Post />} />
-            
             <Route path={"/user/:id"} element={<UserProfile />} />
             <Route path={"/mysales"} element={<MySales />} />
+            <Route path={"/mypurchase"} element={<MyPurchase />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -13,8 +13,6 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState("")
   let navigate = useNavigate();
 
-  
-
   const handleChange = (event) => {
     setSearchTerm(event.target.value)
   }

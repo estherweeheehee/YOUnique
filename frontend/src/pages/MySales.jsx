@@ -14,6 +14,7 @@ const MySales = () => {
     navigate("/login");
   } 
 
+  else {
   const handleView = () => {
     if (view === "single") {
       setView("subscription")
@@ -36,6 +37,7 @@ const MySales = () => {
   
   
   );
+  }
   
 };
 
