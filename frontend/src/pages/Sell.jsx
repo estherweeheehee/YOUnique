@@ -58,8 +58,8 @@ function Sell() {
         <div>
           {product.map((product) => (
             <div key={product._id}>
-              <Link to={"/product/" + product._id}>
-                <img src={product.product_image} alt="" />
+              <Link to={"/sell/" + product._id}>
+                <img src={product.product_image} alt={product.product_name} />
               <p>{product.product_name}</p>
               <p>{product.product_category}</p>
               <p>{product.product_description}</p>
