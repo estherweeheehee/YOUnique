@@ -55,11 +55,11 @@ function Sell() {
 
   return (
     <div>
-      <h1>Esther please insert user profile img as a map</h1>
+      
       <CreateProductForm updateProduct={updateProduct} />
       <div className="container">
         <div className="leftColumn">
-        <ImgAndDesc />
+        <ImgAndDesc img={user.display_pic_url} description={user.user_description} />
         </div>
         <div className="rightColumn">
         <div>

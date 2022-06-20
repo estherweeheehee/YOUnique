@@ -13,7 +13,7 @@ const Post = () => {
   const [edit, setEdit] = useState(-1);
   let navigate = useNavigate()
 
-  if (user.username === undefined) {
+  if (user?.username === undefined) {
     navigate("/login")
   } else {
 
