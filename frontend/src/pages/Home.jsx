@@ -39,8 +39,8 @@ function Home() {
             <button>Search</button>
           </fieldset>
         </form>
-       
       </div>
+      
     <Outlet />
     </>
     ) 

@@ -19,6 +19,8 @@ function UserPost() {
         return (
           <div key={display._id}>
             <p>{display.post}</p>
+            <img src={display.Image_url} />
+            <br></br>
             <button onClick={handleLike}>Like</button>
             <p>{display.date}</p>
           </div>
