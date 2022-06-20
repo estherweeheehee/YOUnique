@@ -1,17 +1,21 @@
 import PostComponent from "../components/PostComponent";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { useReducer } from "react";
 import EditForm from "../components/EditForm";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import ImgAndDesc from "../components/ImgAndDesc";
 
 const Post = () => {
   const [user, setUser] = useAtom(userAtom);    
   const [post, setPost] = useState([]);
   const [edit, setEdit] = useState(-1);
+  let navigate = useNavigate()
 
-
+  if (user.username === undefined) {
+    navigate("/login")
+  } else {
 
   //? Fetch
   useEffect(() => {
@@ -31,12 +35,14 @@ const Post = () => {
     setEdit(id);
     
   };
-  // console.log(user)
+ 
   return (
     <div className="container">
-      <div className="leftcolumn"></div>
+      <div className="leftcolumn">
+      <ImgAndDesc img={user.display_pic_url} description={user.user_description} />
+
+      </div>
       <div className="rightcolumn">
-        <p>{user._id}</p>
         <PostComponent setPost={setPost} post={post}/>
         {post?.map((singlePost, index) => {
           return (
@@ -52,6 +58,7 @@ const Post = () => {
       </div>
     </div>
   );
+      }
 };
 
 export default Post;

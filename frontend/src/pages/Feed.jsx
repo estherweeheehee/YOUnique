@@ -3,8 +3,10 @@ import { useState } from "react";
 import ImgAndDesc from "../components/ImgAndDesc";
 import { Link } from "react-router-dom";
 
+
 function Feed() {
   const [feed, setFeed] = useState([]);
+ 
 
   useEffect(() => {
     fetch(`/api/feed`)
@@ -14,7 +16,7 @@ function Feed() {
 
   return (
     <div>
-      <h1>Esther please insert user profile img as a map</h1>
+      
       <div className="container">
         <div className="leftcolumn"></div>
         <div className="rightcolumn"></div>
