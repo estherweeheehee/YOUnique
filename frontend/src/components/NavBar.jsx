@@ -19,6 +19,7 @@ function NavBar() {
 
   return (
     <div className="nav">
+
       <Link to="/">Home</Link>
       <Link to="/sell">Sell Item</Link>
       <Link to="/feed">Feed</Link>

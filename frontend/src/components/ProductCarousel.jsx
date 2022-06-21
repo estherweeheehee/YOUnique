@@ -4,6 +4,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { Link } from "react-router-dom";
 import '@splidejs/react-splide/css';
 
+
 function ProductCarousel() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
@@ -14,6 +15,7 @@ function ProductCarousel() {
 
   return (
     <div>
+
       <Splide options={{
         perPage:4,
         gap:"0rem",
