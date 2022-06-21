@@ -41,7 +41,7 @@ function Product() {
             body: JSON.stringify( order ),
           })
             .then((response) => response.json())
-            .then((data) => setUser(data));
+            .then((data) => console.log(data));
     }
 
     const handlebuyMS = () => {
@@ -67,7 +67,7 @@ function Product() {
           body: JSON.stringify( order ),
         })
           .then((response) => response.json())
-          .then((data) => setUser(data));
+          .then((data) => console.log(data));
     
     }
   return(

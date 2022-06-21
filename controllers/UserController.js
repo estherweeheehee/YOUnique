@@ -157,7 +157,7 @@ router.post("/buy/OF/:id", async (req, res) => {
       );
       res.send(updatedUser);
     } catch (error) {
-      res.send(error);
+      res.send({ error: error });
     }
   }
 });
@@ -177,7 +177,7 @@ router.post("/buy/MS/:id", async (req, res) => {
       );
       res.send(updatedUser);
     } catch (error) {
-      res.send(error);
+      res.send({ error: error });
     }
   }
 });
