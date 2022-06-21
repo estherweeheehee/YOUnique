@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function EditForm({ singlePost, post, setEdit, setPost }) {
   const [updatePost, setUpdatePost] = useState(singlePost.post);
-  const [updateImg, setUpdateImg] = useState(singlePost.Img_url);
+  const [updateImg, setUpdateImg] = useState(singlePost.Image_url);
 
   const resetPosts = () => {
     const pos = post.findIndex((item) => item._id === singlePost._id);
@@ -59,7 +59,8 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
       />
       <button onClick={handleEditPost}>Change</button>
       <input
-        placeholder="Image"
+        
+        value={updateImg}
         onChange={(event) => setUpdateImg(event.target.value)}
       />
       <button onClick={handleEditImg}>Change</button>
