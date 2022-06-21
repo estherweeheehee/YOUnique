@@ -14,6 +14,9 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
       ...post.slice(pos + 1),
     ]);
   };
+
+  
+
   const handleEditPost = () => {
 
     fetch(`/api/feed/${singlePost._id}`, {

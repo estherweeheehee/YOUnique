@@ -1,7 +1,15 @@
-const ProductCarousell = () => {
+import ProductCarousel from "../components/ProductCarousel"
+import ProductCategory from "../components/ProductCategory"
+
+const ProductHome = () => {
     return (
-        <div>
-      <h3>Popular</h3>
+      <>
+      
+      
+        <ProductCarousel />
+        <ProductCategory productdata={bakedGoods}/>
+        <ProductCategory productdata={jewellery}/>
+        
       {/* <Splide options={{
         perPage:4,
         arrows: false,
@@ -19,7 +27,7 @@ const ProductCarousell = () => {
           </Splide>
           )
         }) */}
-      <h3>New</h3>
+     
        {/* <Splide options={{
         perPage:4,
         arrows: false,
@@ -37,9 +45,9 @@ const ProductCarousell = () => {
           </Splide>
           )
         }) */}
-      
-      </div>
+      </>
+     
     )
 }
 
-export default ProductCarousell
+export default ProductHome

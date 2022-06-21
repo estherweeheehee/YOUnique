@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import ProductCarousell from "./ProductCarousell";
+import ProductCarousell from "./ProductHome";
 import { Outlet } from "react-router-dom";
 import ProductCategory from "../components/ProductCategory";
 
@@ -57,8 +57,7 @@ function Home() {
         </form>
       </div>
     <Outlet />
-    <ProductCategory productdata={bakedGoods}/>
-    <ProductCategory productdata={jewellery}/>
+    
     </>
     ) 
 }

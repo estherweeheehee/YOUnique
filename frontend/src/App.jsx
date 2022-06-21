@@ -12,7 +12,7 @@ import Search from "./pages/Search";
 import UserProfile from "./pages/UserProfile";
 import {atom} from "jotai"
 import MySales from "./pages/MySales";
-import ProductCarousell from "./pages/ProductCarousell";
+import ProductHome from "./pages/ProductHome";
 import MyPurchase from "./pages/MyPurchase";
 import Product from "./pages/Product";
 import Settings from "./pages/Settings";
@@ -28,7 +28,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<Main />}>
             <Route path={"/"} element={<Home />}>
-              <Route path={"/"} element={<ProductCarousell />} />
+              <Route path={"/"} element={<ProductHome />} />
               <Route path={"/search/:id"} element={<Search />} />
             </Route>
             <Route path={"/sell"} element={<Sell />} />
