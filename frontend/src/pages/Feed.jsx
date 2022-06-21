@@ -23,7 +23,7 @@ function Feed() {
         <div>
           {feed.map((feed) => (
             <div key={feed._id}>
-              <Link to={"/user/" + feed._id}>
+              <Link to={"/user/" + feed.userid}>
                 <img src={feed.Image_url} alt="" />
               </Link>
               <p>{feed.post}</p>
