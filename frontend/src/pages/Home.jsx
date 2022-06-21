@@ -1,12 +1,8 @@
 import React from "react";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import ProductCarousell from "./ProductHome";
 import { Outlet } from "react-router-dom";
-import ProductCategory from "../components/ProductCategory";
-
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -22,8 +18,6 @@ function Home() {
     setSearchTerm("")
   }
   
-
-
   return(
     <>
     <div className="search">

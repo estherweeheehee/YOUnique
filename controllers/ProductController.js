@@ -1,4 +1,5 @@
 const express = require("express");
+const { reset } = require("nodemon");
 const Product = require("../models/Product");
 
 const router = express.Router();
@@ -9,7 +10,7 @@ router.post("/", async (req, res) => {
         const product = await Product.create(req.body);
         res.send(product)
       } catch (error) {
-        console.log(error);
+        res.send(error);
       }
 })
 
@@ -19,10 +20,27 @@ router.get("/", async (req, res) => {
         const product = await Product.find()
         res.send(product)
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
   });
   
+// Read Route and filter by search
+router.get("/search/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+      const product = await Product.find()
+      const result = [];
+      for (let element of product) {
+        if (element.product_name.toLowerCase().includes(id) ) {
+          result.push(element)
+        }
+      }
+      res.send(result)
+  } catch (error) {
+      res.send(error)
+  }
+});
+
 // Read Route - by userid
 router.get("/user/:userid", async (req, res) => {
   const { userid } = req.params;
@@ -30,7 +48,7 @@ router.get("/user/:userid", async (req, res) => {
       const product = await Product.find({userid:userid})
       res.send(product)
   } catch (error) {
-      console.log(error)
+      res.send(error)
   }
 });
 
@@ -41,7 +59,7 @@ router.get("/:id", async (req, res) => {
       const product = await Product.find({_id: id})
       res.send(product)
   } catch (error) {
-      console.log(error)
+      res.send(error)
   }
 });
 
@@ -52,7 +70,7 @@ router.get("/category/:id", async (req, res) => {
       const product = await Product.find({product_category: id}).limit(4)
       res.send(product)
   } catch (error) {
-      console.log(error)
+      res.send(error)
   }
 });
 

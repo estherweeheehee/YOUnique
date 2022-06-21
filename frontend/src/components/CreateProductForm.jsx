@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 
-const CreateProductForm = ({updateProduct}) => {
+const CreateProductForm = ({addProduct}) => {
     const [user, setUser] = useAtom(userAtom);  
     const [product, setProduct] = useState({
         product_name: "",
@@ -32,7 +32,7 @@ const CreateProductForm = ({updateProduct}) => {
             body: JSON.stringify( product ),
           })
             .then((response) => response.json())
-            .then((data) => updateProduct(data));
+            .then((data) => addProduct(data));
     }
 
     return (

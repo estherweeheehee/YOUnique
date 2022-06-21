@@ -22,11 +22,15 @@ function Sell() {
         .then((data) => setProduct(data))
     }, []);
   
-    // Update product
-    const updateProduct = (productdetails) => {
+    // Create product
+    const addProduct = (productdetails) => {
       setProduct([...product, productdetails])
     }
 
+    // Edit product details
+    const handleEdit = () => {
+
+    }
     //   const handleEdit = (event)=>{
     //     const id = {
     //       id: event.target.element // .something
@@ -42,6 +46,16 @@ function Sell() {
     //       .then((data) => setUser(data.data));
     //   }
 
+    // delete product
+    const handleDelete = (event) => {
+      console.log(event)
+      // fetch(`/api/product/${user._id}`, { method: "DELETE" })
+      // .then((response) => response.json())
+      // .then((data) => {
+      //   setUser();
+      //   navigate("/login");
+      // });
+    }
     //   const handleDelete=(event)=>{
     //     const id = {
     //       id: event.taget.element // .something
@@ -60,7 +74,7 @@ function Sell() {
   return (
     <div>
       
-      <CreateProductForm updateProduct={updateProduct} />
+      <CreateProductForm addProduct={addProduct} />
       <div className="container">
         <div className="leftColumn">
         <ImgAndDesc img={user.display_pic_url} description={user.user_description} />
@@ -77,9 +91,9 @@ function Sell() {
               <p>{product.product_price_one_off}</p>
               <p>{product.product_price_subscription}</p>
               <p>{product.product_listed_date}</p>
-              <button onClick>Edit</button>
-              <button onClick>Delete</button>
               </Link>
+              <button onClick={handleEdit(event)}>Edit</button>
+              <button onClick={(event) => handleDelete(event.target.value)}>Delete</button>
             </div>
           ))}
         </div>
