@@ -14,6 +14,16 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
       ...post.slice(pos + 1),
     ]);
   };
+
+  const resetImage = () => {
+    const pos = post.findIndex((item) => item._id === singlePost._id);
+
+    setPost([
+      ...post.slice(0, pos),
+      { ...singlePost, Image_url: updateImg },
+      ...post.slice(pos + 1),
+    ]);
+  };
   const handleEditPost = () => {
 
     fetch(`/api/feed/${singlePost._id}`, {
@@ -38,7 +48,7 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
     })
       .then((response) => response.json())
       .then((data) => (data));
-    resetPosts();
+    resetImage();
     setEdit(-1);
   }
 
