@@ -123,7 +123,7 @@ router.delete("/settings/:id", async (req, res) => {
       req.session.destroy();
       res.send(deletedUser);
     } catch (error) {
-      //   res.json({ error: error });
+      
       res.send({ error: error });
     }
   }
