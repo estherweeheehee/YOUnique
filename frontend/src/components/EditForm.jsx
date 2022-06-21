@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function EditForm({ singlePost, post, setEdit, setPost }) {
   const [updatePost, setUpdatePost] = useState(singlePost.post);
-  const [updateImg, setUpdateImg] = useState (singlePost.Img_url)
+  const [updateImg, setUpdateImg] = useState(singlePost.Img_url);
 
   const resetPosts = () => {
     const pos = post.findIndex((item) => item._id === singlePost._id);
@@ -25,7 +25,6 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
     ]);
   };
   const handleEditPost = () => {
-
     fetch(`/api/feed/${singlePost._id}`, {
       method: "PUT",
       headers: {
@@ -34,11 +33,11 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
       body: JSON.stringify({ ...singlePost, post: updatePost }),
     })
       .then((response) => response.json())
-      .then((data) => (data));
+      .then((data) => data);
     resetPosts();
     setEdit(-1);
   };
-  const handleEditImg = ()=>{
+  const handleEditImg = () => {
     fetch(`/api/feed/img/${singlePost._id}`, {
       method: "PUT",
       headers: {
@@ -47,10 +46,10 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
       body: JSON.stringify({ ...singlePost, Image_url: updateImg }),
     })
       .then((response) => response.json())
-      .then((data) => (data));
+      .then((data) => data);
     resetImage();
     setEdit(-1);
-  }
+  };
 
   return (
     <div>
@@ -59,9 +58,11 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
         value={updatePost}
       />
       <button onClick={handleEditPost}>Change</button>
-      <input placeholder="Image"  onChange={(event) => setUpdateImg(event.target.value)}/>
+      <input
+        placeholder="Image"
+        onChange={(event) => setUpdateImg(event.target.value)}
+      />
       <button onClick={handleEditImg}>Change</button>
-
     </div>
   );
 }
