@@ -20,7 +20,7 @@ function Product() {
     const handlebuyOF = () => {
         const order = {
             orderId: {
-                orderType: ordertype,
+                orderType: "OF",
                 orderNum: String(Math.ceil(Math.random() * 9999999))
             },
             price: String(product[0]?.product_price_one_off),
@@ -33,7 +33,7 @@ function Product() {
             status: "unfulfiled"
         }
         
-        fetch(`/api/user/buy/${product[0]?.userid}`, {
+        fetch(`/api/user/buy/OF/${product[0]?.userid}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function Product() {
             body: JSON.stringify( order ),
           })
             .then((response) => response.json())
-            .then((data) => console.log(data));
+            .then((data) => setUser(data));
     }
 
     const handlebuyMS = () => {
@@ -67,7 +67,7 @@ function Product() {
           body: JSON.stringify( order ),
         })
           .then((response) => response.json())
-          .then((data) => console.log(data));
+          .then((data) => setUser(data));
     
     }
   return(
