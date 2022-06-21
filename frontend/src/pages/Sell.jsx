@@ -1,7 +1,7 @@
 import React from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ImgAndDesc from "../components/ImgAndDesc";
 import CreateProductForm from "../components/CreateProductForm";
@@ -10,14 +10,18 @@ import CreateProductForm from "../components/CreateProductForm";
 function Sell() {
     const [user, setUser] = useAtom(userAtom);    
     const [product, setProduct] = useState([])
+    let navigate = useNavigate()
     
+    if (user.username === undefined) {
+      navigate("/login")
+    } else {
     // initial Fetch
     useEffect(() => {
       fetch(`/api/product/user/${user._id}`)
         .then((response) => response.json())
         .then((data) => setProduct(data))
     }, []);
-    
+  
     // Update product
     const updateProduct = (productdetails) => {
       setProduct([...product, productdetails])
@@ -83,6 +87,7 @@ function Sell() {
       </div>
     </div>
   );
+          }
 }
 
 export default Sell;
