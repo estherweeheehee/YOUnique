@@ -23,7 +23,7 @@ function Product() {
         const order = {
             orderId: {
                 orderType: ordertype,
-                orderNum: String(Math.ceil(Math.random() * 999))
+                orderNum: String(Math.ceil(Math.random() * 9999999))
             },
             price: String(ordertype === "OF" ? product[0]?.product_price_one_off : product[0]?.product_price_subscription),
             productName: product[0]?.product_name,
