@@ -19,7 +19,7 @@ router.post("/signup", async (req, res) => {
     req.session.username = req.body.username;
     res.send(user);
   } catch (error) {
-    res.send(error);
+    res.send({status: "fail", data: "error"});
   }
 });
 
