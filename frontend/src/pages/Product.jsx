@@ -17,25 +17,23 @@ function Product() {
           .then((data) => setProduct(data));
       }, []);
 
-    const handleClick = (ordertype) => {
-        const seller = product[0]?.userid
-        
+    const handlebuyOF = () => {
         const order = {
             orderId: {
                 orderType: ordertype,
                 orderNum: String(Math.ceil(Math.random() * 9999999))
             },
-            price: String(ordertype === "OF" ? product[0]?.product_price_one_off : product[0]?.product_price_subscription),
+            price: String(product[0]?.product_price_one_off),
             productName: product[0]?.product_name,
             purchaseDate: Date.now(),
             buyerUsername: user.username,
             buyerId: user._id,
             productId: product[0]?._id,
-            qty: String(ordertype === "OF" ? quantity : 1),
+            qty: String(quantity),
             status: "unfulfiled"
         }
-        console.log(order)
-        fetch(`/api/user/buy/${seller}`, {
+        
+        fetch(`/api/user/buy/${product[0]?.userid}`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -43,7 +41,34 @@ function Product() {
             body: JSON.stringify( order ),
           })
             .then((response) => response.json())
-            .then((data) => setUser(data));
+            .then((data) => console.log(data));
+    }
+
+    const handlebuyMS = () => {
+      const order = {
+        orderId: {
+            orderType: "MS",
+            orderNum: String(Math.ceil(Math.random() * 9999999))
+        },
+        price: String(product[0]?.product_price_subscription),
+        productName: product[0]?.product_name,
+        purchaseDate: Date.now(),
+        buyerUsername: user.username,
+        buyerId: user._id,
+        productId: product[0]?._id,
+        qty: "1",
+        status: "unfulfiled"
+      }
+        fetch(`/api/user/buy/MS/${product[0]?.userid}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify( order ),
+        })
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+    
     }
   return(
     <div>
@@ -70,13 +95,13 @@ function Product() {
             value={quantity}
             onChange={() => setQuantity(event.target.value)}
             />
-            <button onClick={() => handleClick("OF")}>Purchase</button>
+            <button onClick={handlebuyOF}>Purchase</button>
         
         
         <p>Subscription:</p>
         <p>Quantity per month: 1</p>
         <p>Price per month: ${product[0]?.product_price_subscription}</p>
-        <button onClick={() => handleClick("MS")}>Subscribe</button>
+        <button onClick={handlebuyMS}>Subscribe</button>
     </div>
     ) 
 }
