@@ -47,29 +47,11 @@ function Sell() {
     //   }
 
     // delete product
-    const handleDelete = (event) => {
-      console.log(event)
-      // fetch(`/api/product/${user._id}`, { method: "DELETE" })
-      // .then((response) => response.json())
-      // .then((data) => {
-      //   setUser();
-      //   navigate("/login");
-      // });
+    const handleDelete = (prod_id) => {
+      fetch(`/api/product/${prod_id}`, { method: "DELETE" })
+      .then((response) => response.json())
+      .then((data) => {setProduct(product.filter((p) => p._id !== prod_id))});
     }
-    //   const handleDelete=(event)=>{
-    //     const id = {
-    //       id: event.taget.element // .something
-    //     }
-    //     fetch("/api/delete/", {
-    //       method: "DELETEONE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //       body: JSON.stringify(id)//'{"name":"admin", "password":"abc"}',
-    //     })
-    //       .then((response) => response.json())
-    //       .then((data) => setUser(data.data));
-    //   }
 
   return (
     <div>
@@ -93,7 +75,7 @@ function Sell() {
               <p>{product.product_listed_date}</p>
               </Link>
               <button onClick={handleEdit(event)}>Edit</button>
-              <button onClick={(event) => handleDelete(event.target.value)}>Delete</button>
+              <button onClick={() => handleDelete(product._id)}>Delete</button>
             </div>
           ))}
         </div>
