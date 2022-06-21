@@ -8,7 +8,7 @@ const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, 
                 <p className="OrderInput">Order number: {orderNum}</p>
                 <p className="OrderInput">Product Name: {productName}</p>
                 <p className="OrderInput">Product ID: {productId}</p>
-                
+                <p className="OrderInput">Quantity purchased: {qty}</p> 
                 <p className="OrderInput">Amount paid: ${cost}</p> 
                 <p className="OrderInput">Date of Purchase: {purchaseDate}</p>
                 
