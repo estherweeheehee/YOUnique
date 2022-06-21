@@ -35,13 +35,14 @@ const Signup = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.data) {
+        if (data?.data === "error") {
           alert(
             "Error! The username or email is currently in use. Please try again"
           );
           navigate("/login");
         } else {
           setUser(data);
+          console.log(data)
           navigate("/");
         }
       });
