@@ -1,7 +1,8 @@
 import React from "react";
-import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide";
 import { useEffect, useState } from "react";
-import "@splidejs/react-splide/css/core";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Link } from "react-router-dom";
+import '@splidejs/react-splide/css';
 
 function ProductCarousel() {
   const [product, setProduct] = useState([]);
@@ -13,18 +14,22 @@ function ProductCarousel() {
 
   return (
     <div>
-      <h3>Products</h3>
-
-      {product.map((para) => {
-        return (
-          <div key={para._id}>
-        
-                  <p>{para.product_name}</p>
-                  <img src={para.product_image} alt="" />
-             
-          </div>
-        );
-      })}
+      <Splide options={{
+        perPage:4,
+        gap:"0rem",
+        height:" 20rem"
+}}>
+        {product.map((para) => {
+          return (
+            <SplideSlide key={para._id}>
+              <p>{para.product_name}</p>
+              <img src={para.product_image} alt="" 
+              width={"200px"}
+              height={"200px"}/>
+            </SplideSlide>
+          );
+        })}
+      </Splide>
     </div>
   );
 }

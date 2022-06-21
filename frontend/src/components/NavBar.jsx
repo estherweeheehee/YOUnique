@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 
+
 function NavBar() {
   const [user, setUser] = useAtom(userAtom);
   let navigate = useNavigate()

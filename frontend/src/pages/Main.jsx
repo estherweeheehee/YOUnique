@@ -1,15 +1,17 @@
-import NavBar from "../components/NavBar"
-import { Outlet } from "react-router-dom"
+import NavBar from "../components/NavBar";
+import { Outlet } from "react-router-dom";
+import HeroBanner from "../components/HeroBanner";
 
 const Main = () => {
-    return (
-        <>
-            <NavBar />
-            
-            <Outlet />
-        </>
+  return (
+    <>
+      <HeroBanner />
 
-    )
-}
+      <NavBar />
 
-export default Main
+      <Outlet />
+    </>
+  );
+};
+
+export default Main;
