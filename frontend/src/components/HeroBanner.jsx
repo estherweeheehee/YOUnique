@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
+import '@splidejs/splide/css/sea-green';
 import styled from "styled-components";
+
+//persist the state in the local storage
+//atom with storage under jotai documents
 
 function HeroBanner() {
   const [display, setDisplay] = useState([]);
@@ -33,7 +36,7 @@ function HeroBanner() {
   ];
 
   return (
-    <div>
+    <div className=" max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
       <Splide
         options={{
           type: "loop",
@@ -52,7 +55,8 @@ function HeroBanner() {
         {images.map((para) => {
           return (
             <SplideSlide key={para.id}>
-              <Logo src={para.img} alt="" />
+              <img src={para.img} alt="" 
+              className=" w-full h-[30rem] " />
             </SplideSlide>
           );
         })}
@@ -60,6 +64,7 @@ function HeroBanner() {
     </div>
   );
 }
+
 const Logo = styled.img`
   display: block;
   margin-left: auto;

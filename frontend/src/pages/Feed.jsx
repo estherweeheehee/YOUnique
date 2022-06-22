@@ -16,7 +16,6 @@ function Feed() {
 
   return (
     <div>
-      
       <div className="container">
         <div className="leftcolumn"></div>
         <div className="rightcolumn"></div>
