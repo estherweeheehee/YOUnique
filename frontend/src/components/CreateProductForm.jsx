@@ -33,6 +33,16 @@ const CreateProductForm = ({addProduct}) => {
           })
             .then((response) => response.json())
             .then((data) => addProduct(data));
+          setProduct({
+            product_name: "",
+            product_category: "",
+            product_image:  "",
+            product_description: "",
+            product_price_one_off: "",
+            product_price_subscription: "",
+            product_posted_by_userId: "",
+            userid: user._id,
+        })
     }
 
     return (
