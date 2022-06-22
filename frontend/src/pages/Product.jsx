@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 
@@ -9,6 +9,7 @@ function Product() {
     const [product, setProduct] = useState([])
     const [quantity, setQuantity] = useState("")
     const [user, setUser] = useAtom(userAtom);
+    let navigate = useNavigate();
 
     
     useEffect(() => {
@@ -18,6 +19,15 @@ function Product() {
       }, []);
 
     const handlebuyOF = () => {
+      if (user.username === undefined) {
+        alert("Please login to purchase")
+        navigate("/login")
+        return
+      } else if (product[0]?.userid === user._id) {
+        alert("Cannot purchase own product")
+        return
+      } 
+
         const order = {
             orderId: {
                 orderType: "OF",
@@ -45,6 +55,14 @@ function Product() {
     }
 
     const handlebuyMS = () => {
+      if (user.username === undefined) {
+        alert("Please login to purchase")
+        navigate("/login")
+        return
+      } else if (product[0]?.userid === user._id) {
+        alert("Cannot suscribe to own product")
+        return
+      } 
       const order = {
         orderId: {
             orderType: "MS",
