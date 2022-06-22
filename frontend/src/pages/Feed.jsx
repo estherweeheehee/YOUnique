@@ -31,11 +31,7 @@ function Feed() {
         return (
           <div className="flex space-x-3">
             <div className="flex-shrink-0">
-              <img
-                className="h-15 w-15 rounded-full"
-                src={<UserImageFeedComponent para={para.userid} />}
-                alt="Help"
-              />
+              <UserImageFeedComponent para={para.userid} />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium text-gray-900">
@@ -44,7 +40,7 @@ function Feed() {
                 </Link>
               </p>
               <p className="text-md text-black">{para.post}</p>
-              <img src={para.Image_url} alt="" className="h-25 w-25"/>
+              <img src={para.Image_url} alt="" className="h-25 w-" />
               <p className="text-sm text-gray-500">
                 <a href="#" className="hover:underline">
                   {para.date}
@@ -137,7 +133,6 @@ function Feed() {
         );
       })}
     </div>
-   
   );
 }
 

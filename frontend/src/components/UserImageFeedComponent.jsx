@@ -11,7 +11,7 @@ function UserImageFeedComponent({para}) {
     }, []);
   return (
     <div>
-         <img src={userImg.display_pic_url} alt="" />
+         <img src={userImg.display_pic_url} alt=""  className="h-10 w-10 rounded-full"/>
     </div>
   )
 }
