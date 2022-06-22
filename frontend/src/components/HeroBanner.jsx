@@ -1,33 +1,34 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import '@splidejs/react-splide/css/core';
+import '@splidejs/react-splide/css';
 import styled from "styled-components";
 
 function HeroBanner() {
-    const [product, setProduct] = useState([])
+    const [display, setDisplay] = useState([])
     useEffect(()=>{
         fetch(`/api/product`)
         .then(response => response.json())
-        .then(data => setProduct(data));
+        .then(data => setDisplay(data));
     },[])
 
-    console.log(Math.floor(Math.random))
-    
-  const images = [
+    let i = Math.floor(Math.random() * display.length);
+    let random =display[i]?.product_image 
+    let x = Math.floor(Math.random() * display.length);
+    let random2 =display[x]?.product_image 
+   
+const images = [
     {
       img: "https://i.imgur.com/mwWQy9h.png",
       id: 1,
     },
     {
-      img: "https://www.foodbusinessnews.net/ext/resources/2020/2/Blended-protein-bread_Lead.jpg?t=1581622397&width=1080",
+      img: random,
       id: 2,
-      name: "Baked Goods",
     },
     {
-      img: "https://shopee.sg/blog/wp-content/uploads/2018/12/tamara-bellis-429124-unsplash.jpg",
+      img: random2,
       id: 3,
-      name: "Handmade Jewellery",
     },
   ];
   return (
@@ -39,7 +40,6 @@ function HeroBanner() {
           perPage: 1,
           height:"30rem",
           arrows:true,
-          type   : 'loop',
           drag   : 'free',
           snap   : true,
         }}

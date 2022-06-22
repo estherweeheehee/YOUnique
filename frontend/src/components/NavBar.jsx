@@ -42,7 +42,6 @@ function NavBar() {
     navigate("/login");
   };
 
-  console.log(user);
 
   return (
     <Disclosure as="nav" className="bg-white shadow">
