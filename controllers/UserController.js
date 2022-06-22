@@ -148,6 +148,22 @@ router.get("/mypurchase/MS/:id", async (req, res) => {
   }
 });
 
+router.put("/OForderstatus/:id", async (req, res) => {
+    const { id } = req.params;
+    if (!req.session.username) {
+        res.send({ status: "fail", data: "No access" });
+    } else {
+        try {
+            const updatedUser = await User.findByIdAndUpdate(id, { $set: {sales_order_one_off: req.body}}, {
+                new: true,
+              })
+            res.send(updatedUser)
+        } catch (error) {
+            res.send({ error: error });
+        }
+    }
+})
+
 router.put("/settings/:id", async (req, res) => {
   const { id } = req.params;
   if (!req.session.username) {
@@ -232,5 +248,6 @@ router.post("/buy/MS/:id", async (req, res) => {
     }
   }
 });
+
 
 module.exports = router;

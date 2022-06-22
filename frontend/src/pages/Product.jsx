@@ -30,7 +30,7 @@ function Product() {
             buyerId: user._id,
             productId: product[0]?._id,
             qty: String(quantity),
-            status: "unfulfiled"
+            status: "unfulfilled"
         }
         
         fetch(`/api/user/buy/OF/${product[0]?.userid}`, {
@@ -57,7 +57,7 @@ function Product() {
         buyerId: user._id,
         productId: product[0]?._id,
         qty: "1",
-        status: "unfulfiled"
+        status: "unfulfilled"
       }
         fetch(`/api/user/buy/MS/${product[0]?.userid}`, {
           method: "POST",
