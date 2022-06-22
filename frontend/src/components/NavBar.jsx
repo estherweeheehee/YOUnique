@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { Fragment } from 'react'
@@ -8,20 +8,38 @@ import { SearchIcon } from '@heroicons/react/solid'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { PlusSmIcon } from '@heroicons/react/solid'
 
+const navigation = [
+  { name: "Home", to: "/"},
+  { name: "Social Media Feed", to: "/feed"},
+  { name: "Sell Item", to: "/sell"},
+  { name: "Post Update", to: "/post"},
+];
+
+const navigation_button = [
+  { name: "Login", to: "/"},
+  { name: "Sign up", to: "/feed"},
+]
+
+const navigation_login_bar = [
+  { name: "My Sales", to: "/mysales"},
+  { name: "My Purchase", to: "/mypurchase"},
+  { name: "Settings", to: "/setting"},
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
 function NavBar() {
   const [user, setUser] = useAtom(userAtom);
   let navigate = useNavigate()
+  const location = useLocation()
 
   const handleLogOut = () => {
     fetch(`/api/user/logout`)
         .then((response) => response.json())
         .then((data) => setUser());
     navigate("/login")
-    
-  }
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
   }
 
   return (
@@ -45,31 +63,19 @@ function NavBar() {
                     />
                   </div>
                   <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                    {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                    <a
-                      href="#"
-                      className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                    >
-                      Calendar
-                    </a>
+                  {navigation.map((item) => (
+                      <Link
+                        key={item.name}
+                        className={classNames(
+                          item.to === location.pathname ? "border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium" :
+                          "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                        )}
+                        aria-current={item.to === location.pathname ? "page" : undefined}
+                        to={item.to}
+                      >
+                        {item.name}
+                      </Link>
+                    ))}                    
                   </div>
                 </div>
                 <div className="flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end">
@@ -104,13 +110,16 @@ function NavBar() {
                 </div>
                 <div className="hidden lg:ml-4 lg:flex lg:items-center">
                 <div className="flex-shrink-0">
+                {navigation_button.map((item) => (
+                  <Link key={item.name} to={item.to}>
                   <button
                     type="button"
-                    className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 m-2"
                   >
-                    <PlusSmIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-                    <span>New Job</span>
+                    <span>{item.name}</span>
                   </button>
+                  </Link>
+                ))}   
                 </div>
   
                   {/* Profile dropdown */}
@@ -174,7 +183,6 @@ function NavBar() {
   
             <Disclosure.Panel className="lg:hidden">
               <div className="pt-2 pb-3 space-y-1">
-                {/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800" */}
                 <Disclosure.Button
                   as="a"
                   href="#"
