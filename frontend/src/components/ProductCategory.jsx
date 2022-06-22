@@ -7,7 +7,7 @@ const ProductCategory = ({productdata}) => {
         <div className="md:flex md:items-center md:justify-between">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">{productdata[0]?.product_category}</h2>
           <a href="#" className="hidden text-sm font-medium text-indigo-600 hover:text-indigo-500 md:block">
-            Shop the collection<span aria-hidden="true"> &rarr;</span>
+            Shop this category<span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
 
@@ -35,7 +35,7 @@ const ProductCategory = ({productdata}) => {
 
         <div className="mt-8 text-sm md:hidden">
           <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
-            Shop the collection<span aria-hidden="true"> &rarr;</span>
+            Shop this category<span aria-hidden="true"> &rarr;</span>
           </a>
         </div>
       </div>
