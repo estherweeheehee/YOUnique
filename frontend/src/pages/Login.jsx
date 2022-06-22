@@ -36,6 +36,7 @@ const Login = () => {
     };
         
     return (
+      <div>
         <form method="post" onSubmit={handleSubmitLogin}>
             <fieldset>
               <legend>Login</legend>
@@ -64,6 +65,7 @@ const Login = () => {
               <button>Login</button>
             </fieldset>
           </form>
+          </div>
     )
 }
 

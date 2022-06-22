@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const Settings = () => {
   const [user, setUser] = useAtom(userAtom);
-  
   let navigate = useNavigate();
 
   if (user.username === undefined) {
