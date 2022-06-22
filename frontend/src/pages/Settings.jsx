@@ -7,7 +7,7 @@ const Settings = () => {
   const [user, setUser] = useAtom(userAtom);
   let navigate = useNavigate();
 
-  if (user.username === undefined) {
+  if (user?.username === undefined) {
     navigate("/login");
   }
 

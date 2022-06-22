@@ -27,7 +27,7 @@ const MyPurchase = () => {
   };
 
   useEffect(() => {
-    if (user.username === undefined) {
+    if (user?.username === undefined) {
       navigate("/login");
     } else {
       if (view === "MS") {
