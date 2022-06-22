@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import '@splidejs/react-splide/css/core';
 import styled from "styled-components";
 
 function HeroBanner() {
+    const [product, setProduct] = useState([])
+    useEffect(()=>{
+        fetch(`/api/product`)
+        .then(response => response.json())
+        .then(data => setProduct(data));
+    },[])
+
+    console.log(Math.floor(Math.random))
+    
   const images = [
     {
       img: "https://i.imgur.com/mwWQy9h.png",
@@ -25,7 +35,6 @@ function HeroBanner() {
       <Splide
         options={{
           type: "loop",
-          drag: false,
           focus: "center",
           perPage: 1,
           height:"30rem",
@@ -36,8 +45,8 @@ function HeroBanner() {
         }}
       >
         {images.map((para) => {
-          return (
-            <SplideSlide key={para.id}>
+            return (
+              <SplideSlide key={para.id}>
               <Logo src={para.img} alt="" />
             </SplideSlide>
           );

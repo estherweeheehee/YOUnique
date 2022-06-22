@@ -21,7 +21,6 @@ function Home() {
   return(
     <>
     <div className="search">
-    <HeroBanner />
     <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Find a creator or item</legend>

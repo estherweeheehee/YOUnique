@@ -1,6 +1,6 @@
-import ProductCarousel from "../components/ProductCarousel";
 import ProductCategory from "../components/ProductCategory";
 import { useState, useEffect } from "react";
+import HeroBanner from "../components/HeroBanner";
 
 const ProductHome = () => {
   const [bakedGoods, setBakedGoods] = useState([])
@@ -22,7 +22,7 @@ const ProductHome = () => {
 
   return (
     <>
-      <ProductCarousel />
+        <HeroBanner />
       <ProductCategory productdata={bakedGoods} />
       <ProductCategory productdata={jewellery} />
     </>
