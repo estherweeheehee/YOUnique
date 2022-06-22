@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ProductCategory = ({productdata}) => {
   return (
     <div className="bg-slate-100">
@@ -20,10 +22,10 @@ const ProductCategory = ({productdata}) => {
                 />
               </div>
               <h3 className="mt-4 text-sm text-gray-700">
-                <a href={product.href}>
+                <Link to={"/sell/" + product?._id}>
                   <span className="absolute inset-0" />
                   {product?.product_name}
-                </a>
+                </Link>
               </h3>
               <p className="mt-1 text-sm font-medium text-gray-900">Purchase price: ${product?.product_price_one_off}</p>
               {product?.product_price_subscription === 0 ? "": <p className="mt-1 text-sm font-medium text-gray-900">Subscription price: ${product?.product_price_subscription}</p>}
