@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import '@splidejs/splide/css/sea-green';
+import '@splidejs/react-splide/css';
 import styled from "styled-components";
 
 //persist the state in the local storage
