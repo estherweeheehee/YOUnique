@@ -20,10 +20,10 @@ const navigation_button = [
   { name: "Sign up", to: "/signup"},
 ]
 
-const navigation_login_bar = [
+const navigation_dropdown = [
   { name: "My Sales", to: "/mysales"},
   { name: "My Purchase", to: "/mypurchase"},
-  { name: "Settings", to: "/setting"},
+  { name: "Account Settings", to: "/settings"},
 ];
 
 function classNames(...classes) {
@@ -114,14 +114,14 @@ function NavBar() {
                   <Link key={item.name} to={item.to}>
                   <button
                     type="button"
-                    className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 m-2"
+                    className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 m-3"
                   >
                     <span>{item.name}</span>
                   </button>
                   </Link>
                 ))}   
                 </div>
-  
+                
                   {/* Profile dropdown */}
                   <Menu as="div" className="ml-4 relative flex-shrink-0">
                     <div>
@@ -144,36 +144,17 @@ function NavBar() {
                       leaveTo="transform opacity-0 scale-95"
                     >
                       <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <Menu.Item>
+                      {navigation_dropdown.map((item) => (  
+                        <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <a
-                              href="#"
+                            <Link key={item.name} to={item.to}
                               className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                             >
-                              Your Profile
-                            </a>
+                              {item.name}
+                            </Link>
                           )}
                         </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                            >
-                              Sign out
-                            </a>
-                          )}
-                        </Menu.Item>
+                      ))} 
                       </Menu.Items>
                     </Transition>
                   </Menu>
@@ -184,8 +165,6 @@ function NavBar() {
             <Disclosure.Panel className="lg:hidden">
               <div className="pt-2 pb-3 space-y-1">
                 <Disclosure.Button
-                  as="a"
-                  href="#"
                   className="bg-indigo-50 border-indigo-500 text-indigo-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
                   Dashboard
@@ -196,20 +175,6 @@ function NavBar() {
                   className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
                 >
                   Team
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Projects
-                </Disclosure.Button>
-                <Disclosure.Button
-                  as="a"
-                  href="#"
-                  className="border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"
-                >
-                  Calendar
                 </Disclosure.Button>
               </div>
               <div className="pt-4 pb-3 border-t border-gray-200">
@@ -227,27 +192,15 @@ function NavBar() {
                   </div>
                 </div>
                 <div className="mt-3 space-y-1">
+                {navigation_dropdown.map((item) => (
+                <Link key={item.name} to={item.to}>
                   <Disclosure.Button
-                    as="a"
-                    href="#"
                     className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
                   >
-                    Your Profile
+                    {item.name}
                   </Disclosure.Button>
-                  <Disclosure.Button
-                    as="a"
-                    href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                  >
-                    Settings
-                  </Disclosure.Button>
-                  <Disclosure.Button
-                    as="a"
-                    href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100"
-                  >
-                    Sign out
-                  </Disclosure.Button>
+                </Link>
+                ))}
                 </div>
               </div>
             </Disclosure.Panel>
