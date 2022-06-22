@@ -70,6 +70,8 @@ function Product() {
           .then((data) => console.log(data));
     
     }
+
+    
   return(
     <div>
         <img src={product[0]?.product_image} alt={product[0]?.product_name} />
@@ -97,11 +99,16 @@ function Product() {
             />
             <button onClick={handlebuyOF}>Purchase</button>
         
+        {product[0]?.product_price_subscription === 0 ? null
+        : 
+        <>
+          <p>Subscription:</p>
+          <p>Quantity per month: 1</p>
+          <p>Price per month: ${product[0]?.product_price_subscription}</p>
+          <button onClick={handlebuyMS}>Subscribe</button>
+        </>
+        }
         
-        <p>Subscription:</p>
-        <p>Quantity per month: 1</p>
-        <p>Price per month: ${product[0]?.product_price_subscription}</p>
-        <button onClick={handlebuyMS}>Subscribe</button>
     </div>
     ) 
 }
