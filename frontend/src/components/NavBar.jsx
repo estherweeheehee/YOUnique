@@ -16,8 +16,8 @@ const navigation = [
 ];
 
 const navigation_button = [
-  { name: "Login", to: "/"},
-  { name: "Sign up", to: "/feed"},
+  { name: "Login", to: "/login"},
+  { name: "Sign up", to: "/signup"},
 ]
 
 const navigation_login_bar = [
