@@ -20,24 +20,24 @@ function Home() {
   
   return(
     <>
-    <div className="search">
+    <div className="max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
+    <div className="mt-2 relative flex items-center">
     <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Find a creator or item</legend>
-            <label htmlFor="searchterm">Search term</label>
             <input 
+            type="text"
             name="searchterm" 
             id="searchterm" 
-            placeholder="Find a creator or item" 
+            placeholder="Find an item" 
             value={searchTerm}
             onChange={handleChange}
+            className="w-96 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block pr-12 sm:text-sm border-gray-300 rounded-md"
             />
-            <button>Search</button>
           </fieldset>
         </form>
       </div>
+      </div>
     <Outlet />
-    
     </>
     ) 
 }

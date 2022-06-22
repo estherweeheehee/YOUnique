@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SearchResults = ({ results }) => {
   return (
     <div className="bg-slate-100">
-    <div className="max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
+    <div className="max-w-2xl mx-auto py-4 px-4 sm:py-1 sm:px-3 lg:max-w-7xl lg:px-8">
       <div className="mt-2 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:grid-cols-4 md:gap-y-0 lg:gap-x-8">
         {results?.map((product) => (
           <div key={product?._id} className="group relative">
