@@ -23,10 +23,8 @@ const ProductHome = () => {
   return (
     <>
       <ProductCarousel />
-      {/* <ProductCategory productdata={bakedGoods} />
-      <ProductCategory productdata={jewellery} /> */}
-
-    
+      <ProductCategory productdata={bakedGoods} />
+      <ProductCategory productdata={jewellery} />
     </>
   );
 };
