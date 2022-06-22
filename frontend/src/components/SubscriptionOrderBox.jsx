@@ -1,4 +1,14 @@
-const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, buyerUsername, productId, qty, status}) => {
+import { useState } from "react";
+
+const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, buyerUsername, productId, qty, status, itemIndex, orderID, handleChangeStatus}) => {
+    const [toggleStatus, setToggleStatus] = useState(status);
+
+    const handleClick = (newStatus) => {
+            handleChangeStatus(orderID, itemIndex, newStatus)
+            setToggleStatus(newStatus)
+    }
+
+    
     return (
         <>
             <div className="OrderBox">
@@ -7,9 +17,14 @@ const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, b
                 <p className="OrderInput">Product ID: {productId}</p>
                 <p className="OrderInput">Product: {productName}</p>
                 <p className="OrderInput">Quantity per month: {qty}</p>
-                <p className="OrderInput">Monthly subscription fee: ${price}</p>
+                <p className="OrderInput">Monthly subscription fee: ${price.toLocaleString()}</p>
                 <p className="OrderInput">Buyer: {buyerUsername}</p>
                 <p className="OrderInput">Delivery Status for the month: {status}</p>
+                {toggleStatus === "unfulfilled" ? 
+                    <button onClick={() => handleClick("delivered")}>Change to delivered </button> 
+                    :
+                    <button onClick={() => handleClick("unfulfilled")}>Change to unfulfilled</button>
+                }
             </div>
         </>
     )

@@ -1,36 +1,65 @@
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import SubscriptionOrderBox from "./SubscriptionOrderBox";
+import { useState } from "react";
 
 const SubscriptionOrder = () => {
-    const [user, setUser] = useAtom(userAtom);
+  const [user, setUser] = useAtom(userAtom);
+  const [orders, setOrders] = useState(user.sales_order_subscription);
 
-    const DisplayOrders = () => {
-        const ordersArr = [];
-        for (let i = 0; i < user.sales_order_subscription.length; i++) {
-            ordersArr.push(
-                <SubscriptionOrderBox 
-                    orderNum = {user.sales_order_subscription[i].orderId.orderNum}
-                    price = {user.sales_order_subscription[i].price}
-                    productName = {user.sales_order_subscription[i].productName}
-                    subscriptionDate = {user.sales_order_subscription[i].subscriptionDate}
-                    buyerUsername = {user.sales_order_subscription[i].buyerUsername}
-                    productId = {user.sales_order_subscription[i].productId}
-                    qty = {user.sales_order_subscription[i].qty}
-                    status = {user.sales_order_subscription[i].status}
-                    key= {i}
-                />
-            )
-        }
-        return (ordersArr)
+  const handleChangeStatus = (id, index, newStatus) => {
+    const updatedOrder = {
+      ...user.sales_order_subscription[index],
+      status: newStatus,
+    };
+    const newOrders = [
+      ...orders.slice(0, index),
+      updatedOrder,
+      ...orders.slice(index + 1),
+    ];
+
+    fetch(`/api/user/MSorderstatus/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newOrders),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setOrders(newOrders);
+      });
+  };
+
+  const DisplayOrders = () => {
+    const ordersArr = [];
+    for (let i = 0; i < orders.length; i++) {
+      ordersArr.push(
+        <SubscriptionOrderBox
+          orderID={user._id}
+          itemIndex={i}
+          orderNum={orders[i].orderId.orderNum}
+          price={orders[i].price}
+          productName={orders[i].productName}
+          subscriptionDate={orders[i].subscriptionDate}
+          buyerUsername={orders[i].buyerUsername}
+          productId={orders[i].productId}
+          qty={orders[i].qty}
+          status={orders[i].status}
+          handleChangeStatus={handleChangeStatus}
+          key={i}
+        />
+      );
     }
+    return ordersArr;
+  };
 
-    return (
-        <>
-            <h2>Subscription orders:</h2>
-            <DisplayOrders />
-        </>
-    )
-}
+  return (
+    <>
+      <h2>Subscription orders:</h2>
+      <DisplayOrders />
+    </>
+  );
+};
 
-export default SubscriptionOrder
+export default SubscriptionOrder;
