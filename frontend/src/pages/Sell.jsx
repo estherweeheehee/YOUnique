@@ -14,7 +14,7 @@ function Sell() {
     const [num, setNum] = useState(-1);
     let navigate = useNavigate()
     
-    if (user.username === undefined) {
+    if (user?.username === undefined) {
       navigate("/login")
     } else {
     
