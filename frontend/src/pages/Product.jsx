@@ -19,7 +19,7 @@ function Product() {
       }, []);
 
     const handlebuyOF = () => {
-      if (user.username === undefined) {
+      if (user?.username === undefined) {
         alert("Please login to purchase")
         navigate("/login")
         return
@@ -55,7 +55,7 @@ function Product() {
     }
 
     const handlebuyMS = () => {
-      if (user.username === undefined) {
+      if (user?.username === undefined) {
         alert("Please login to purchase")
         navigate("/login")
         return
