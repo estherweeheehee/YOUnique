@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { Outlet } from "react-router-dom";
+import HeroBanner from "../components/HeroBanner";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("")
@@ -21,6 +21,7 @@ function Home() {
   return(
     <>
     <div className="search">
+    <HeroBanner />
     <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Find a creator or item</legend>
