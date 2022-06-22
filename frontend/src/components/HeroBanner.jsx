@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import '@splidejs/react-splide/css';
+import "@splidejs/react-splide/css";
 import styled from "styled-components";
 
 function HeroBanner() {
-    const [display, setDisplay] = useState([])
-    useEffect(()=>{
-        fetch(`/api/product`)
-        .then(response => response.json())
-        .then(data => setDisplay(data));
-    },[])
+  const [display, setDisplay] = useState([]);
+  useEffect(() => {
+    fetch(`/api/product`)
+      .then((response) => response.json())
+      .then((data) => setDisplay(data));
+  }, []);
 
-    let i = Math.floor(Math.random() * display.length);
-    let random =display[i]?.product_image 
-    let x = Math.floor(Math.random() * display.length);
-    let random2 =display[x]?.product_image 
-   
-const images = [
+  let i = Math.floor(Math.random() * display.length);
+  let random = display[i]?.product_image;
+  let x = Math.floor(Math.random() * display.length);
+  let random2 = display[x]?.product_image;
+
+  const images = [
     {
       img: "https://i.imgur.com/mwWQy9h.png",
       id: 1,
@@ -31,6 +31,7 @@ const images = [
       id: 3,
     },
   ];
+
   return (
     <div>
       <Splide
@@ -38,15 +39,19 @@ const images = [
           type: "loop",
           focus: "center",
           perPage: 1,
-          height:"30rem",
-          arrows:true,
-          drag   : 'free',
-          snap   : true,
+          height: "30rem",
+          arrows: true,
+          drag: "free",
+          snap: true,
+          autoplay: true,
+          autoScroll: {
+            speed: 3,
+          },
         }}
       >
         {images.map((para) => {
-            return (
-              <SplideSlide key={para.id}>
+          return (
+            <SplideSlide key={para.id}>
               <Logo src={para.img} alt="" />
             </SplideSlide>
           );
@@ -62,9 +67,5 @@ const Logo = styled.img`
   width: 75rem;
   height: 25rem;
 `;
-
-const Div = styled.div`
-
-`
 
 export default HeroBanner;
