@@ -24,6 +24,13 @@ const Signup = () => {
     });
   };
 
+  const useDefault = () => {
+    setSignUp({
+      ...signUp,
+      display_pic_url: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+    })
+  }
+
   const handleSubmitSignup = (event) => {
     event.preventDefault();
     fetch("/api/user/signup", {
@@ -125,6 +132,7 @@ const Signup = () => {
           value={signUp.display_pic_url}
           onChange={() => handleChange(event, "display_pic_url")}
         />
+        <p onClick={useDefault}>Click to use default picture</p>
         <br />
         <label htmlFor="userdescription">User Description</label>
         <input
