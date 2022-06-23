@@ -15,8 +15,8 @@ import {
 } from "@heroicons/react/outline";
 
 const tabs = [
-  { name: "View My Single Order Purchases", href: "#", current: "OF" },
-  { name: "View My Subscriptions", href: "#", current: "MS" },
+  { name: "View Single Orders", href: "#", current: "OF" },
+  { name: "View Subscription Orders", href: "#", current: "MS" },
 ];
 
 function classNames(...classes) {
