@@ -8,7 +8,7 @@ import moment from 'moment';
 function Product() {
     const { id } = useParams();
     const [product, setProduct] = useState([])
-    const [quantity, setQuantity] = useState("")
+    const [quantity, setQuantity] = useState(1)
     const [user, setUser] = useAtom(userAtom);
     let navigate = useNavigate();
 
@@ -27,7 +27,10 @@ function Product() {
       } else if (product[0]?.userid === user._id) {
         alert("Cannot purchase own product")
         return
-      } 
+      } else if (quantity < 1 || quantity === null) {
+        alert("Purchase quantity has to be at least 1. Please select quantity again.")
+        return
+      }
 
         const order = {
             orderId: {

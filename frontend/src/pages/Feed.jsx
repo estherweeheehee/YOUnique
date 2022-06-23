@@ -25,7 +25,7 @@ function Feed() {
   useEffect(() => {
     fetch(`/api/feed`)
       .then((response) => response.json())
-      .then((data) => setUserFeed(data));
+      .then((data) => setUserFeed(data.reverse()));
   }, []);
 
   return (
