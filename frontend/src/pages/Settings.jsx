@@ -66,8 +66,9 @@ const Settings = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto py-8 px-4 sm:py-4 sm:px-3 lg:max-w-7xl lg:px-8">
+    <div className="max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
       {/* Description list with inline editing */}
+      <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Account settings</h1>
       <div className="mt-4 divide-y divide-gray-200">
         <div className="space-y-1">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
