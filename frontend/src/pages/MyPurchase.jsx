@@ -29,6 +29,23 @@ const MyPurchase = () => {
   const [view, setView] = useState("OF");
   let navigate = useNavigate();
 
+  useEffect(() => {
+    if (user?.username === undefined) {
+      navigate("/login");
+      return;
+    }
+    if (view === "MS") {
+      fetchMS();
+    } else {
+      fetchOF();
+    }
+  }, []);
+
+  // if (user?.username === undefined) {
+  //   let navigate = useNavigate();
+  //   navigate("/login");
+  // } else {
+
   const fetchOF = () => {
     const userId = user._id;
     fetch(`/api/user/mypurchase/OF/${userId}`)
@@ -43,17 +60,13 @@ const MyPurchase = () => {
       .then((data) => setPurchaseData(data));
   };
 
-  useEffect(() => {
-    if (user?.username === undefined) {
-      navigate("/login");
-    } else {
-      if (view === "MS") {
-        fetchMS();
-      } else {
-        fetchOF();
-      }
-    }
-  }, [view]);
+  // useEffect(() => {
+  //   if (view === "MS") {
+  //     fetchMS();
+  //   } else {
+  //     fetchOF();
+  //   }
+  // }, [view]);
 
   const MakeMyPurchases = () => {
     return purchaseData.map((item, index) => (
@@ -93,32 +106,19 @@ const MyPurchase = () => {
     } else {
       setView("OF");
     }
-  }
-
+  };
 
   return (
     <>
-    
-          
-
-          
-        
-
-
-      {/* <h1>My Purchases</h1>
-      <button onClick={() => setView("OF")}>View One-off Purchases</button>
-      <button onClick={() => setView("MS")}>View Subscriptions</button> */}
       <main className="max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
         <div className="max-w-xl">
-          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">My purchases</h1>
-          <p className="mt-4 text-sm text-gray-500">
-            View your purchases
-           
-          </p>
+          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
+            My purchases
+          </h1>
+          <p className="mt-4 text-sm text-gray-500">View your purchases</p>
           <div className="mt-6 hidden sm:block">
             <nav className="flex space-x-4" aria-label="Tabs">
               {tabs.map((tab) => (
-                
                 <a
                   key={tab.name}
                   onClick={handleView}
@@ -137,14 +137,12 @@ const MyPurchase = () => {
         </div>
 
         <div className="mt-6 space-y-16 sm:mt-10">
-        {view === "OF" ? <MakeMyPurchases /> : <MakeMySubscriptions />}
-          
+          {view === "OF" ? <MakeMyPurchases /> : <MakeMySubscriptions />}
         </div>
       </main>
-
-      
     </>
   );
 };
+// };
 
 export default MyPurchase;

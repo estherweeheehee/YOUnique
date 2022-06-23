@@ -17,7 +17,12 @@ function Product() {
         fetch(`/api/product/${id}`)
           .then((response) => response.json())
           .then((data) => {
-            setProduct(data)
+            if (data?.data === "error") {
+              navigate("/")
+            } else {
+              setProduct(data)
+            }
+            
           });
       }, []);
 

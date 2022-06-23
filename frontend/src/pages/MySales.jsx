@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { useNavigate } from "react-router-dom";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 import SingleOrder from "../components/SingleOrder";
 import SubscriptionOrder from "../components/SubscriptionOrder";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
@@ -27,9 +27,14 @@ const MySales = () => {
 
   let navigate = useNavigate();
 
+  
+
   if (user?.username === undefined) {
-    navigate("/login");
+    useEffect(() => {
+      navigate("/login");
+    },[])
     return;
+    
   } else {
     const [view, setView] = useState("single");
     const handleView = () => {
