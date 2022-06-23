@@ -51,19 +51,24 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
     setEdit(-1);
   };
 
+  const handleCancel = ()=>{
+    setEdit(-1);
+
+  }
   return (
     <div>
       <input
         onChange={(event) => setUpdatePost(event.target.value)}
         value={updatePost}
       />
-      <button onClick={handleEditPost}>Change</button>
+      <button onClick={handleEditPost}>Change Text</button>
       <input
         
         value={updateImg}
         onChange={(event) => setUpdateImg(event.target.value)}
       />
-      <button onClick={handleEditImg}>Change</button>
+      <button onClick={handleEditImg}>Change Image</button>
+      <button onClick={handleCancel}>Cancel</button>
     </div>
   );
 }
