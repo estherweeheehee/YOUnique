@@ -60,25 +60,25 @@ const Post = () => {
               </div>
             </div>
             <div className="min-w-0 flex-1">
-              <p className="text-base font-medium text-gray-900">
-                <p className="hover:underline">
+              <div className="text-base font-medium text-gray-900">
+                <div className="hover:underline">
                   <PostComponent setPost={setPost} post={post} />
-                </p>
-              </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         {/* BREAK */}
         {post.map((singlePost, index) => {
-          return <div>
+          return <div key={index}>
   <div className="bg-white px-4 py-5 sm:px-6">
           <div className="flex space-x-3">
             <div className="min-w-0 flex-1">
-              <p className="text-sm font-medium text-gray-900">
-                <p  className="hover:underline">
+              <div className="text-sm font-medium text-gray-900">
+                <div  className="hover:underline">
                 {edit === singlePost._id ? <EditForm singlePost={singlePost} post={post} setPost={setPost} setEdit={setEdit} /> : <p>{singlePost.post}</p>}
-                </p>
-              </p>
+                </div>
+              </div>
               <p className="text-sm text-gray-500">
               <img src={singlePost.Image_url} alt="" />
               </p>
