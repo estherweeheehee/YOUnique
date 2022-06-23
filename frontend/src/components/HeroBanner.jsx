@@ -22,15 +22,15 @@ function HeroBanner() {
 
   const images = [
     {
-      img: "https://i.imgur.com/mwWQy9h.png",
+      img: "https://i.imgur.com/Ckx8jru.png",
       id: 1,
     },
     {
-      img: random,
+      img: "https://www.marketing-interactive.com/images/sg/content-images/cookies_s_w.jpg",
       id: 2,
     },
     {
-      img: random2,
+      img: "https://i.etsystatic.com/8048562/r/il/db1d70/3789130286/il_794xN.3789130286_pij7.jpg",
       id: 3,
     },
   ];
