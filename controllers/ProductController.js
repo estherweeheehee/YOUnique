@@ -1,5 +1,4 @@
 const express = require("express");
-const { reset } = require("nodemon");
 const Product = require("../models/Product");
 
 const router = express.Router();

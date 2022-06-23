@@ -2,12 +2,12 @@ import moment from "moment"
 import { useState, useEffect } from "react";
 
 const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, productId, qty, status}) => {
-    const [productPic, setProductPic] = useState([])
+    const [product, setProduct] = useState([])
 
     useEffect(() => {
         fetch(`/api/product/${productId}`)
           .then((response) => response.json())
-          .then((data) => setProductPic(data));
+          .then((data) => setProduct(data));
       }, []);
 
     const cost = parseInt(price) * parseInt(qty)
@@ -23,7 +23,7 @@ const MyPurchaseBox = ({ orderType, orderNum, price, productName, purchaseDate, 
                 <p className="OrderInput">Amount paid: ${cost}</p> 
                 <p className="OrderInput">Date of Purchase: {moment(purchaseDate).format('DD MMMM YYYY, h:mm:ss a')}</p>
                 
-                <img src={productPic[0]?.product_image} alt=""/>
+                <img src={product[0]?.product_image} alt={product[0]?.product_name}/>
                 
                 <p className="OrderInput">Status: {status}</p>
             </div>

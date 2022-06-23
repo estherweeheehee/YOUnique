@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 
 const MySubscriptionBox = ({ orderType, orderNum, price, productName, subscriptionDate, productId, qty, status}) => {
-    const [productPic, setProductPic] = useState([])
+    const [product, setProduct] = useState([])
     
     useEffect(() => {
         fetch(`/api/product/${productId}`)
           .then((response) => response.json())
-          .then((data) => setProductPic(data));
+          .then((data) => setProduct(data));
       }, []);
 
     return (
@@ -20,7 +20,7 @@ const MySubscriptionBox = ({ orderType, orderNum, price, productName, subscripti
                 <p className="OrderInput">Monthly cost: ${price}</p> 
                 <p className="OrderInput">Date of Subscription: {subscriptionDate}</p>
                 
-                <img src={productPic[0]?.product_image} alt=""/>
+                <img src={product[0]?.product_image} alt={product[0]?.product_name}/>
 
                 <p className="OrderInput">Status: {status}</p>
             </div>

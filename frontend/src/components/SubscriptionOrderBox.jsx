@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react"
 import moment from "moment"
 import { Link } from "react-router-dom";
 
 const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, buyerUsername, buyerId, productId, qty, status, itemIndex, orderID, handleChangeStatus}) => {
     const [toggleStatus, setToggleStatus] = useState(status);
+    const [product, setProduct] = useState([])
+
+    useEffect(() => {
+      fetch(`/api/product/${productId}`)
+        .then((response) => response.json())
+        .then((data) => setProduct(data));
+    }, []);
 
     const handleClick = (newStatus) => {
             handleChangeStatus(orderID, itemIndex, newStatus)
@@ -39,11 +46,11 @@ const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, b
                 
                   <div key={orderNum} className="py-6 sm:flex">
                     <div className="flex space-x-4 sm:min-w-0 sm:flex-1 sm:space-x-6 lg:space-x-8">
-                      {/* <img
-                        src={product.imageSrc}
-                        alt={product.imageAlt}
+                      <img
+                        src={product[0]?.product_image}
+                        alt={product[0]?.product_name}
                         className="flex-none w-20 h-20 rounded-md object-center object-cover sm:w-48 sm:h-48"
-                      /> */}
+                      />
                       <div className="pt-1.5 min-w-0 flex-1 sm:pt-0">
                         <h3 className="text-sm font-medium text-gray-900">
                           <Link to={`/sell/${productId}`}>{productName}</Link>
