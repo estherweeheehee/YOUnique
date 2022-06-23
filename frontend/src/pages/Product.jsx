@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import moment from 'moment';
 
 function Product() {
     const { id } = useParams();
@@ -98,7 +99,7 @@ function Product() {
         <p>{product[0]?.product_description}</p>
         
         
-        <p>{product[0]?.product_listed_date}</p>
+        <p>{moment(product[0]?.product_listed_date).format('DD MMMM YYYY, h:mm:ss a')}</p>
 
         <p>One-off purchase:</p>
         <p>Price: ${product[0]?.product_price_one_off} each</p>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import moment from "moment"
 import { useParams } from "react-router-dom";
 
 function UserPost() {
@@ -21,7 +22,7 @@ function UserPost() {
             <img src={display.Image_url} />
             <br></br>
             <button onClick={handleLike}>Like</button>
-            <p>{display.date}</p>
+            <p>{moment(display.date).format('DD MMMM YYYY h:mm:ss a')}</p>
           </div>
         );
       })}

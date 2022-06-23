@@ -10,8 +10,11 @@ import {
   FlagIcon,
   StarIcon,
 } from "@heroicons/react/solid";
+
 import UserFeedComponents from "../components/UserNameFeedComponents";
 import UserImageFeedComponent from "../components/UserImageFeedComponent";
+import moment from 'moment';
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -43,7 +46,7 @@ function Feed() {
               <img src={para.Image_url} alt="" className="h-25 w-" />
               <p className="text-sm text-gray-500">
                 <a href="#" className="hover:underline">
-                  {para.date}
+                  {moment(para.date).format('DD MMMM YYYY, h:mm:ss a')}
                 </a>
               </p>
             </div>
