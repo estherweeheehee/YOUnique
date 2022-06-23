@@ -214,7 +214,7 @@ const Settings = () => {
       </div>
       
       {/* Delete account  */}
-      <div className="mt-10 divide-y divide-gray-200">
+      <div className="mt-6 divide-y divide-gray-200">
         <div className="space-y-1">
         <h3 className="text-lg leading-6 font-medium text-gray-900">Delete your account</h3>
         <div className="max-w-2xl text-sm text-gray-500">
