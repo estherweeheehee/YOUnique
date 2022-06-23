@@ -63,17 +63,12 @@ const CreateProductForm = () => {
       {/* logo plus wording */}
       <div className="min-h-full flex flex-col justify-center py-8 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            className="mx-auto h-12 w-auto"
-            src="https://i.imgur.com/4fZaiaq.png"
-            alt="Workflow"
-          />
           <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">
             Add a new product
           </h2>
         </div>
 
-        {/* product category & password */}
+        {/* product form */}
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-15">
             <form
