@@ -68,7 +68,7 @@ const Settings = () => {
   return (
     <div className="max-w-2xl mx-auto py-8 px-4 sm:py-4 sm:px-3 lg:max-w-7xl lg:px-8">
       {/* Description list with inline editing */}
-      <div className="mt-10 divide-y divide-gray-200">
+      <div className="mt-4 divide-y divide-gray-200">
         <div className="space-y-1">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
             Profile
