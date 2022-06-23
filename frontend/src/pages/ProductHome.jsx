@@ -12,10 +12,8 @@ const ProductHome = () => {
     fetch(`/api/product/category/${product_category[0]}`)
       .then((response) => response.json())
       .then((data) => setBakedGoods(data));
-  }, []);
 
-  useEffect(() => {
-    fetch(`/api/product/category/${product_category[1]}`)
+      fetch(`/api/product/category/${product_category[1]}`)
       .then((response) => response.json())
       .then((data) => setJewellery(data));
   }, []);
