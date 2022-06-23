@@ -5,6 +5,23 @@ import { userAtom } from "../App";
 import { useEffect } from "react";
 import MyPurchaseBox from "../components/MyPurchaseBox";
 import MySubscriptionBox from "../components/MySubscriptionBox";
+import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import {
+  MenuIcon,
+  SearchIcon,
+  ShoppingCartIcon,
+  UserIcon,
+  XIcon,
+} from "@heroicons/react/outline";
+
+const tabs = [
+  { name: "View My Single Order Purchases", href: "#", current: "OF" },
+  { name: "View My Subscriptions", href: "#", current: "MS" },
+];
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
 
 const MyPurchase = () => {
   const [user, setUser] = useAtom(userAtom);
@@ -70,13 +87,62 @@ const MyPurchase = () => {
     ));
   };
 
+  const handleView = () => {
+    if (view === "OF") {
+      setView("MS");
+    } else {
+      setView("OF");
+    }
+  }
+
 
   return (
     <>
-      <h1>My Purchases</h1>
+    
+          
+
+          
+        
+
+
+      {/* <h1>My Purchases</h1>
       <button onClick={() => setView("OF")}>View One-off Purchases</button>
-      <button onClick={() => setView("MS")}>View Subscriptions</button>
-      {view === "OF" ? <MakeMyPurchases /> : <MakeMySubscriptions />}
+      <button onClick={() => setView("MS")}>View Subscriptions</button> */}
+      <main className="max-w-3xl mx-auto px-4 py-16 sm:px-6 sm:pt-24 sm:pb-32 lg:px-8">
+        <div className="max-w-xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">My Purchases</h1>
+          <p className="mt-2 text-sm text-gray-500">
+            View your purchases
+           
+          </p>
+          <div className="hidden sm:block">
+            <nav className="flex space-x-4" aria-label="Tabs">
+              {tabs.map((tab) => (
+                
+                <a
+                  key={tab.name}
+                  onClick={handleView}
+                  className={classNames(
+                    tab.current === view
+                      ? "bg-indigo-100 text-gray-700"
+                      : "text-gray-500 hover:text-gray-700",
+                    "px-3 py-2 font-medium text-sm rounded-md"
+                  )}
+                >
+                  {tab.name}
+                </a>
+              ))}
+            </nav>
+          </div>
+        </div>
+
+        <div className="mt-12 space-y-16 sm:mt-16">
+        {view === "OF" ? <MakeMyPurchases /> : <MakeMySubscriptions />}
+          
+        </div>
+      </main>
+
+      
     </>
   );
 };

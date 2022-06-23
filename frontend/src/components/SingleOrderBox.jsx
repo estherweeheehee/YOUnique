@@ -60,6 +60,10 @@ const SingleOrderBox = ({orderNum, price, productName, purchaseDate, buyerUserna
                         </p>
                         <p className="text-sm text-gray-500 truncate">
 
+                          <span>Quantity purchased: {qty}</span>
+                        </p>
+                        <p className="text-sm text-gray-500 truncate">
+
                           <span>Date of purchase: {moment(purchaseDate).format('DD MMMM YYYY')}</span>
                           
                         </p>
