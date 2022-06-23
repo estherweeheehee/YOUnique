@@ -155,9 +155,11 @@ const Signup = () => {
 
               {/* display picture */}
               <div>
-                <label htmlFor="userpicture" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="userpicture" className="flex text-sm font-medium text-gray-700">
                   Display picture URL
+                  <p className="mx-2 mb-1 text-xs text-white font-medium bg-indigo-600 px-2 py-1 w-max rounded-md" onClick={useDefault}>Click to use default image</p>
                 </label>
+                
                 <div className="mt-1">
                   <input
                     id="userpicture"
@@ -169,6 +171,7 @@ const Signup = () => {
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+                
               </div>
 
               {/* display picture */}
