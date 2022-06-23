@@ -108,14 +108,14 @@ const MyPurchase = () => {
       {/* <h1>My Purchases</h1>
       <button onClick={() => setView("OF")}>View One-off Purchases</button>
       <button onClick={() => setView("MS")}>View Subscriptions</button> */}
-      <main className="max-w-3xl mx-auto px-4 py-16 sm:px-6 sm:pt-24 sm:pb-32 lg:px-8">
+      <main className="max-w-2xl mx-auto py-16 px-4 sm:py-6 sm:px-3 lg:max-w-7xl lg:px-8">
         <div className="max-w-xl">
-          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">My Purchases</h1>
-          <p className="mt-2 text-sm text-gray-500">
+          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">My purchases</h1>
+          <p className="mt-4 text-sm text-gray-500">
             View your purchases
            
           </p>
-          <div className="hidden sm:block">
+          <div className="mt-6 hidden sm:block">
             <nav className="flex space-x-4" aria-label="Tabs">
               {tabs.map((tab) => (
                 
@@ -136,7 +136,7 @@ const MyPurchase = () => {
           </div>
         </div>
 
-        <div className="mt-12 space-y-16 sm:mt-16">
+        <div className="mt-6 space-y-16 sm:mt-10">
         {view === "OF" ? <MakeMyPurchases /> : <MakeMySubscriptions />}
           
         </div>
