@@ -30,9 +30,9 @@ function Feed() {
 
   return (
     <div className="bg-white px-4 py-5 sm:px-6">
-      {userFeed.map((para) => {
+      {userFeed.map((para,index) => {
         return (
-          <div className="flex space-x-3">
+          <div className="flex space-x-3" key={index}>
             <div className="flex-shrink-0">
               <UserImageFeedComponent para={para.userid} />
             </div>

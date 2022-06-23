@@ -11,10 +11,10 @@ function UserFeedComponents({para}) {
   }, []);
 
   return (
-    <div>
+    <>
         {userFeed.username}
       
-    </div>
+    </>
   )
 }
 

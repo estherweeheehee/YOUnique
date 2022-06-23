@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import HeroBanner from "../components/HeroBanner";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("")
