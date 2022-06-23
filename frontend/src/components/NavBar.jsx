@@ -10,7 +10,7 @@ const navigation = [
   { name: "Home", to: "/" },
   { name: "Social Media Feed", to: "/feed" },
   { name: "Sell Item", to: "/sell" },
-  { name: "Post Update", to: "/post" },
+  { name: "My Content", to: "/post" },
 ];
 
 const navigation_button_logout = [{ name: "Log out", to: "/" }];
