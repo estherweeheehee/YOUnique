@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import moment from "moment"
 
 const UserProduct = () => {
   let { id } = useParams();
@@ -21,7 +22,7 @@ const UserProduct = () => {
             <p>{element.product_description}</p>
             <p>{element.product_price_one_off}</p>
             <p>{element.product_price_subscription}</p>
-            <p>{element.product_listed_date}</p>            
+            <p>{moment(element.product_listed_date).format('DD MMMM YYYY, h:mm:ss a')}</p>            
         </div>
       ))}
     </div>

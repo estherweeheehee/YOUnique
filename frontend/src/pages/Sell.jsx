@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import ImgAndDesc from "../components/ImgAndDesc";
 import EditProductForm from "../components/EditProductForm";
 import CreateProductForm from "../components/CreateProductForm";
+import moment from "moment"
 
 
 function Sell() {
@@ -71,7 +72,7 @@ function Sell() {
               <p>{product.product_description}</p>
               <p>{product.product_price_one_off}</p>
               <p>{product.product_price_subscription}</p>
-              <p>{product.product_listed_date}</p>
+              <p>{moment(product.product_listed_date).format('DD MMMM YYYY, h:mm:ss a')}</p>
               </Link>
               <button onClick={() => handleEdit(product._id)}>Edit</button>
               <button onClick={() => handleDelete(product._id)}>Delete</button>

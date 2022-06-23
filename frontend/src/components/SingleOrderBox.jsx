@@ -1,4 +1,5 @@
 import { useState } from "react"
+import moment from "moment"
 
 const SingleOrderBox = ({orderNum, price, productName, purchaseDate, buyerUsername, productId, qty, status, itemIndex, orderID, handleChangeStatus}) => {
     const cost = parseInt(price) * parseInt(qty)
@@ -15,7 +16,7 @@ const SingleOrderBox = ({orderNum, price, productName, purchaseDate, buyerUserna
         <>
             <div className="OrderBox">
                 <p className="OrderInput">Order number: {orderNum}</p>
-                <p className="OrderInput">Date of Purchase: {purchaseDate}</p>
+                <p className="OrderInput">Date of Purchase: {moment(purchaseDate).format('DD MMMM YYYY, h:mm:ss a')}</p>
                 <p className="OrderInput">Product ID: {productId}</p>
                 <p className="OrderInput">Product: {productName}</p>
                 <p className="OrderInput">Amount paid: ${cost.toLocaleString()}</p>

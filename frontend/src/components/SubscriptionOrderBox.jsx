@@ -1,4 +1,5 @@
 import { useState } from "react";
+import moment from "moment"
 
 const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, buyerUsername, productId, qty, status, itemIndex, orderID, handleChangeStatus}) => {
     const [toggleStatus, setToggleStatus] = useState(status);
@@ -13,7 +14,7 @@ const SubscriptionOrderBox = ({orderNum, price, productName, subscriptionDate, b
         <>
             <div className="OrderBox">
                 <p className="OrderInput">Order number: {orderNum}</p>
-                <p className="OrderInput">Date of Purchase: {subscriptionDate}</p>
+                <p className="OrderInput">Date of Purchase: {moment(subscriptionDate).format('DD MMMM YYYY, h:mm:ss a')}</p>
                 <p className="OrderInput">Product ID: {productId}</p>
                 <p className="OrderInput">Product: {productName}</p>
                 <p className="OrderInput">Quantity per month: {qty}</p>
