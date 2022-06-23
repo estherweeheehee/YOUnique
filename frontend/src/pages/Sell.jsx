@@ -87,10 +87,17 @@ function Sell() {
       </div>
 
       <div className="mt-4">
-        <h2 className="text-xl font-bold text-gray-900">Listing</h2>
+        {num === -1 ? <h2 className="text-xl font-bold text-gray-900">Listing</h2> : "" }
 
         <div className="mt-4 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
           {product.map((product) => (
+            num === product._id ? (
+              <EditProductForm
+              key={product._id}
+              product={product}
+              submitEdit={submitEdit}
+              />
+              ) : (
             <div key={product._id}>
               <Link to={"/sell/" + product?._id}>
               <div className="relative inset-0">
@@ -125,7 +132,7 @@ function Sell() {
                 <span>Delete product</span>
               </button>
               </div>
-            </div>
+            </div>)
           ))}
         </div>
       </div>
