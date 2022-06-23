@@ -15,17 +15,26 @@ function UserPost() {
 
   return (
     <div>
+      <br />
+      <h1 className="text-2xl font-bold text-gray-900 truncate userpost">
+            My Posts:
+          </h1>
+          <br />
       {userPost.map((display) => {
         return (
-          <div key={display._id}>
+          <div className="usercontents" key={display._id}>
+
             <p>{display.post}</p>
+            <br />
             <img src={display.Image_url} />
-            <br></br>
-           
-            <p>{moment(display.date).format('DD MMMM YYYY h:mm:ss a')}</p>
+            <br />
+            <br />
+            <p>Posted on: {moment(display.date).format('DD MMMM YYYY h:mm:ss a')}</p>
+            
           </div>
         );
       })}
+      <br />
     </div>
   );
 }

@@ -11,18 +11,19 @@ function classNames(...classes) {
 const Settings = () => {
   const [user, setUser] = useAtom(userAtom);
   let navigate = useNavigate();
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
-    useState(true);
-  const [autoUpdateApplicantDataEnabled, setAutoUpdateApplicantDataEnabled] =
-    useState(false);
-
   if (user?.username === undefined) {
     useEffect(() => {
       navigate("/login");
     }, [])
     return;
   }
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [automaticTimezoneEnabled, setAutomaticTimezoneEnabled] =
+    useState(true);
+  const [autoUpdateApplicantDataEnabled, setAutoUpdateApplicantDataEnabled] =
+    useState(false);
+
+  
 
   const [toggleEditDesc, setToggleEditDesc] = useState(false);
   const [editDesc, setEditDesc] = useState(user.user_description);
@@ -184,7 +185,7 @@ const Settings = () => {
             Account
           </h3>
           <p className="max-w-2xl text-sm text-gray-500">
-            Please send an email to the adminstrator to change the following details.
+            Please send an email to the administrator to change the following details.
           </p>
         </div>
         <div className="mt-6">

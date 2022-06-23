@@ -90,17 +90,20 @@ function UserProfile() {
                 />
                 <span>Products</span>
               </button>
-              <div className="absolute inset-x-0 bottom-0 h-20">
-                {view === "posts" ? <UserPost /> : <UserProduct />}
-              </div>
+              
             </div>
           </div>
         </div>
+        
         <div className="hidden sm:block md:hidden mt-6 min-w-0 flex-1">
           <h1 className="text-2xl font-bold text-gray-900 truncate">
             {profile.name}
           </h1>
         </div>
+        <div className="mt-6 absolute inset-x-0 h-20">
+        
+                {view === "posts" ? <UserPost /> : <UserProduct />}
+              </div>
       </div>
     </div>
   );

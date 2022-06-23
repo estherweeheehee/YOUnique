@@ -27,8 +27,6 @@ const MySales = () => {
 
   let navigate = useNavigate();
 
-  
-
   if (user?.username === undefined) {
     useEffect(() => {
       navigate("/login");

@@ -33,16 +33,6 @@ const MyPurchase = () => {
     return;
   }
   
-
-  
-
-  
-    // if (user?.username === undefined) {
-    //   useEffect(() => {
-    //     navigate("/login");
-    //   })
-    //   return;
-    // } else {
       const [purchaseData, setPurchaseData] = useState([]);
       const [view, setView] = useState("OF");
 

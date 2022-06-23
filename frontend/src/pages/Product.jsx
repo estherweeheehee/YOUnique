@@ -102,19 +102,25 @@ function Product() {
 
     
   return(
-    <div>
+    <>
+    <div className="productcontents">
+        <h3 className="text-2xl font-bold">{product[0]?.product_name}</h3>
+        <br/>
         <img src={product[0]?.product_image} alt={product[0]?.product_name} />
-        <p>{product[0]?.product_name}</p>
-        <p>{product[0]?.product_category}</p>
-        <p>{product[0]?.product_description}</p>
+        <br/>
+        <p><b>Product Category:</b> {product[0]?.product_category}</p>
+        <p><b>Product Description:</b> {product[0]?.product_description}</p>
         
         
-        <p>{moment(product[0]?.product_listed_date).format('DD MMMM YYYY, h:mm:ss a')}</p>
+        <p><b>Product Listed Since:</b> {moment(product[0]?.product_listed_date).format('DD MMMM YYYY')}</p>
+        <br />
+        <div className="purchasebox">
+        <h3 className="text-xl font-bold">One-off Purchase:</h3>
+        
+        <p><b>Price:</b> ${product[0]?.product_price_one_off} each</p>
 
-        <p>One-off purchase:</p>
-        <p>Price: ${product[0]?.product_price_one_off} each</p>
-
-            <label htmlFor="qty">Quantity to purchase (one-off):</label>
+            <label htmlFor="qty"><b>Quantity to purchase (one-off):</b></label>
+            <br/>
             <input 
             
             required
@@ -126,19 +132,25 @@ function Product() {
             value={quantity}
             onChange={() => setQuantity(event.target.value)}
             />
-            <button onClick={handlebuyOF}>Purchase</button>
-        
+            <br/>
+            <br />
+            <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handlebuyOF}>Purchase</button>
+            </div>
+            
         {product[0]?.product_price_subscription === 0 ? null
         : 
-        <>
-          <p>Subscription:</p>
-          <p>Quantity per month: 1</p>
-          <p>Price per month: ${product[0]?.product_price_subscription}</p>
-          <button onClick={handlebuyMS}>Subscribe</button>
-        </>
+        <div className="purchasebox">
+          <h3 className="text-xl font-bold">Monthly Subscription:</h3>
+
+          <p><b>Quantity per month:</b> 1</p>
+          <p><b>Price per month:</b> ${product[0]?.product_price_subscription}</p>
+          <br/>
+          <button className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handlebuyMS}>Subscribe</button>
+          </div>
         }
         
     </div>
+    </>
     ) 
 }
 
