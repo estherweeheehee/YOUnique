@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { userAtom } from "../App";
 import { useEffect } from "react";
 import MyPurchaseBox from "../components/MyPurchaseBox";
-import MySubscriptionBox from "./MySubscriptionBox";
+import MySubscriptionBox from "../components/MySubscriptionBox";
 
 const MyPurchase = () => {
   const [user, setUser] = useAtom(userAtom);
