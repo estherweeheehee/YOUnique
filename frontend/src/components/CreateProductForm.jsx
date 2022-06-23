@@ -31,32 +31,30 @@ const CreateProductForm = () => {
       ...product,
       [key]: event.target.value,
     });
-  };
+    }
 
   const handleSubmitProduct = (event) => {
     event.preventDefault();
-    fetch("/api/product/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((response) => response.json())
-      .then((data) => setProduct({
-        product_name: "",
-        product_category: "",
-        product_image: "",
-        product_description: "",
-        product_price_one_off: "",
-        product_price_subscription: "",
-        product_posted_by_userId: "",
-        userid: user._id,
-      }));
-    
-    navigate("/sell")
-
-  };
+      fetch("/api/product/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      })
+        .then((response) => response.json())
+        .then((data) => setProduct({
+          product_name: "",
+          product_category: "",
+          product_image: "",
+          product_description: "",
+          product_price_one_off: "",
+          product_price_subscription: "",
+          product_posted_by_userId: "",
+          userid: user._id,
+        }));
+      navigate("/sell")
+    }
 
   return (
     <>
@@ -171,13 +169,19 @@ const CreateProductForm = () => {
                   <input
                     id="productpriceoneoff"
                     name="productpriceoneoff"
-                    type="text"
-                    required
+                    type="number"
+                    required min="0.01" step="0.01"
                     value={product.product_price_one_off}
                     onChange={() => handleChange(event, "product_price_one_off")}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+                {product.product_price_one_off === "" || product.product_price_one_off > 0 ? "" : <label
+                  htmlFor="productpriceoneoff"
+                  className="mt-1 block text-sm font-medium text-red-500"
+                >
+                  Product price should be a number greater than 0.
+                </label>}
               </div>
 
               {/* product subscription price */}
@@ -188,17 +192,30 @@ const CreateProductForm = () => {
                 >
                   Monthly Subscription Price (Quantity of 1 per month)
                 </label>
+                <label
+                  htmlFor="productpricesubscription"
+                  className="mt-1 block text-sm font-medium text-gray-700"
+                >
+                  Please put 0 if the product is not available for subscription.
+                </label>
                 <div className="mt-1">
                   <input
                     id="productpricesubscription"
                     name="productpricesubscription"
-                    type="text"
-                    required
+                    type="number"
+                    required min="0" step="0.01"
                     value={product.product_price_subscription}
                     onChange={() => handleChange(event, "product_price_subscription")}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+
+                {product.product_price_subscription >= 0 ? "" : <label
+                  htmlFor="productpricesubscription"
+                  className="mt-1 block text-sm font-medium text-red-500"
+                >
+                  Subscription price should be a number greater than -1.
+                </label>}
               </div>
 
 
@@ -215,6 +232,7 @@ const CreateProductForm = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

@@ -108,7 +108,7 @@ function Sell() {
                 <div className="relative mt-4">
                   <h3 className="mt-4 text-sm text-gray-700">{product.product_name}</h3>
                   <p className="mt-1 text-sm font-medium text-gray-900">Sale price: ${product.product_price_one_off}</p>
-                  {product?.product_price_subscription === 0 ? "": <p className="mt-1 text-sm font-medium text-gray-900">Subscription price ${product.product_price_subscription}</p>}
+                  {parseFloat(product?.product_price_subscription) === 0 ? <p className="mt-1 text-sm font-medium text-gray-900">Subscription price: Not applicable</p> : <p className="mt-1 text-sm font-medium text-gray-900">Subscription price: ${product.product_price_subscription}</p>}
                 </div>
               </div>
               </Link>
