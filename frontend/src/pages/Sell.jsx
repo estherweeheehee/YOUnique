@@ -55,7 +55,7 @@ function Sell() {
 
     return (
       <>
-    <div className="max-w-2xl mx-auto lg:max-w-7xl lg:px-8">
+    {num === -1 ? <div className="max-w-2xl mx-auto lg:max-w-7xl lg:px-8">
       <div>
         <img className="h-32 w-full object-cover lg:h-48" src="https://images.unsplash.com/photo-1444628838545-ac4016a5418a?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="" />
       </div>
@@ -86,18 +86,12 @@ function Sell() {
         </div>
       </div>
 
+
       <div className="mt-4">
-        {num === -1 ? <h2 className="text-xl font-bold text-gray-900">Listing</h2> : "" }
+        <h2 className="text-xl font-bold text-gray-900">Listing</h2> 
 
         <div className="mt-4 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
           {product.map((product) => (
-            num === product._id ? (
-              <EditProductForm
-              key={product._id}
-              product={product}
-              submitEdit={submitEdit}
-              />
-              ) : (
             <div key={product._id}>
               <Link to={"/sell/" + product?._id}>
               <div className="relative inset-0">
@@ -132,11 +126,16 @@ function Sell() {
                 <span>Delete product</span>
               </button>
               </div>
-            </div>)
+            </div>
           ))}
         </div>
-      </div>
-      </div>
+      </div> 
+      </div> : <EditProductForm
+                    key={product._id}
+                    product={product}
+                    productid={num}
+                    submitEdit={submitEdit}
+                  /> }
       </>
       // <div>
       //   <CreateProductForm addProduct={addProduct} />
