@@ -115,12 +115,12 @@ function NavBar() {
                     ))}
                   </div>
                 ) : (
-                  <div className="flex-shrink-0">
+                  <div className="flex-shrink-0 space-x-4">
                     {navigation_button.map((item) => (
                       <Link key={item.name} to={item.to}>
                         <button
                           type="button"
-                          className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 m-3"
+                          className="relative inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                           <span>{item.name}</span>
                         </button>
