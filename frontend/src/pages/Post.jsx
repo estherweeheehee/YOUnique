@@ -27,7 +27,10 @@ const Post = () => {
   let navigate = useNavigate();
 
   if (user?.username === undefined) {
-    navigate("/login");
+    useEffect(() => {
+      navigate("/login");
+    })
+    return;
   } else {
     //? Fetch
     useEffect(() => {

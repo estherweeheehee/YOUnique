@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +8,10 @@ const CreateProductForm = () => {
   const navigate = useNavigate();
 
   if (user?.username === undefined) {
-    navigate("/login")
+    useEffect(() => {
+      navigate("/login")
+    }, [])
+    return;
   }
 
   const [product, setProduct] = useState({
