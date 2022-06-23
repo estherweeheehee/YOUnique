@@ -271,8 +271,18 @@ router.get("/feed/:id", async (req, res) => {
     const user = await User.findOne({ _id: id });
     res.send(user);
   } catch (error) {
-    res.send(error);
+    res.send({ error: error });
   }
 });
+
+router.get("/search/:id", async (req, res) => {
+    const { id } = req.params;
+    try {
+      const user = await User.findOne({ username: id });
+      res.send(user);
+    } catch (error) {
+    res.send({ error: error });
+    }
+  });
 
 module.exports = router;
