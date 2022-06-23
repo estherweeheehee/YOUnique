@@ -278,8 +278,15 @@ router.get("/feed/:id", async (req, res) => {
 router.get("/search/:id", async (req, res) => {
     const { id } = req.params;
     try {
-      const user = await User.findOne({ username: id });
-      res.send(user);
+        const users = await User.find()
+      const result = [];
+      for (let element of users) {
+        if (element.username.toLowerCase().includes(id) ) {
+          result.push(element)
+        }
+      }
+      
+      res.send(result);
     } catch (error) {
     res.send({ error: error });
     }
