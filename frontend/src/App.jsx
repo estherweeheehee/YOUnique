@@ -19,6 +19,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import FeedSearch from "./pages/FeedSearch";
 import FeedHome from "./pages/FeedHome";
+import CreateProductForm from "./components/CreateProductForm";
 
 
 
@@ -36,6 +37,7 @@ function App() {
             </Route>
             <Route path={"/sell"} element={<Sell />} />
             <Route path={"/sell/:id"} element={<Product />} />
+            <Route path={"/sell/newproduct/"} element={<CreateProductForm />} />
             <Route path={"/feed"} element={<FeedHome />}>
               <Route path={"/feed"} element={<Feed />} />
               <Route path={"/feed/search/:id"} element={<FeedSearch />} />
