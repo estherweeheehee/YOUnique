@@ -25,18 +25,24 @@ function classNames(...classes) {
 
 const MyPurchase = () => {
   const [user, setUser] = useAtom(userAtom);
-  
   let navigate = useNavigate();
-
+  if (user?.username === undefined) {
+    useEffect(() => {
+      navigate("/login");
+    })
+    return;
+  }
   
 
   
-    if (user?.username === undefined) {
-      useEffect(() => {
-        navigate("/login");
-      })
-      return;
-    } else {
+
+  
+    // if (user?.username === undefined) {
+    //   useEffect(() => {
+    //     navigate("/login");
+    //   })
+    //   return;
+    // } else {
       const [purchaseData, setPurchaseData] = useState([]);
       const [view, setView] = useState("OF");
 
@@ -149,6 +155,6 @@ const MyPurchase = () => {
     </>
   );
 };
-}
+// }
 
 export default MyPurchase;
