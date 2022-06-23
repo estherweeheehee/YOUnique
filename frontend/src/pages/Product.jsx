@@ -16,7 +16,9 @@ function Product() {
     useEffect(() => {
         fetch(`/api/product/${id}`)
           .then((response) => response.json())
-          .then((data) => setProduct(data));
+          .then((data) => {
+            setProduct(data)
+          });
       }, []);
 
     const handlebuyOF = () => {

@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
+import { useNavigate } from "react-router-dom";
 
 const CreateProductForm = ({ addProduct }) => {
   const [user, setUser] = useAtom(userAtom);
+  const navigate = useNavigate();
+
+  if (user?.username === undefined) {
+    navigate("/login")
+  }
+
   const [product, setProduct] = useState({
     product_name: "",
     product_category: "",
@@ -14,6 +21,7 @@ const CreateProductForm = ({ addProduct }) => {
     product_posted_by_userId: "",
     userid: user._id,
   });
+  
 
   const handleChange = (event, key) => {
     setProduct({
@@ -43,6 +51,8 @@ const CreateProductForm = ({ addProduct }) => {
       product_posted_by_userId: "",
       userid: user._id,
     });
+    navigate("/sell")
+
   };
 
   return (
@@ -151,48 +161,48 @@ const CreateProductForm = ({ addProduct }) => {
                 </div>
               </div>
 
-              {/* Product prices */}
-              <div className="grid grid-cols-6 gap-6">
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="productpriceoneoff"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    One-off Product Price
-                  </label>
+              {/* product one off price */}
+              <div>
+                <label
+                  htmlFor="productpriceoneoff"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  One-off Product Price
+                </label>
+                <div className="mt-1">
                   <input
-                    type="text"
-                    name="productpriceoneoff"
                     id="productpriceoneoff"
+                    name="productpriceoneoff"
+                    type="text"
                     required
                     value={product.product_price_one_off}
-                    onChange={() =>
-                      handleChange(event, "product_price_one_off")
-                    }
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  />
-                </div>
-
-                <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="productpricesubscription"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Monthly Subscription Price (Quantity of 1 per month)
-                  </label>
-                  <input
-                    type="text"
-                    name="productpricesubscription"
-                    id="productpricesubscription"
-                    required
-                    value={product.product_price_subscription}
-                    onChange={() =>
-                      handleChange(event, "product_price_subscription")
-                    }
-                    className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    onChange={() => handleChange(event, "product_price_one_off")}
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
               </div>
+
+              {/* product subscription price */}
+              <div>
+                <label
+                  htmlFor="productpricesubscription"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Monthly Subscription Price (Quantity of 1 per month)
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="productpricesubscription"
+                    name="productpricesubscription"
+                    type="text"
+                    required
+                    value={product.product_price_subscription}
+                    onChange={() => handleChange(event, "product_price_subscription")}
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  />
+                </div>
+              </div>
+
 
               {/* Sign up */}
               <div>
