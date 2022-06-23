@@ -17,6 +17,8 @@ import Product from "./pages/Product";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import FeedSearch from "./pages/FeedSearch";
+import FeedHome from "./pages/FeedHome";
 
 
 
@@ -34,7 +36,10 @@ function App() {
             </Route>
             <Route path={"/sell"} element={<Sell />} />
             <Route path={"/sell/:id"} element={<Product />} />
-            <Route path={"/feed"} element={<Feed />} />
+            <Route path={"/feed"} element={<FeedHome />}>
+              <Route path={"/feed"} element={<Feed />} />
+              <Route path={"/feed/search/:id"} element={<FeedSearch />} />
+            </Route>
             <Route path={"/login"} element={<Login />} />
             <Route path={"/signup"} element={<Signup />} />
             <Route path={"/post/"} element={<Post />} />
