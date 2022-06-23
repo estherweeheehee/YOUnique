@@ -58,7 +58,7 @@ router.get("/:id", async (req, res) => {
       const product = await Product.find({_id: id})
       res.send(product)
   } catch (error) {
-      res.send(error)
+    res.send({ error: error });
   }
 });
 

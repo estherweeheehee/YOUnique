@@ -3,7 +3,7 @@ import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { useNavigate } from "react-router-dom";
 
-const CreateProductForm = ({ addProduct }) => {
+const CreateProductForm = () => {
   const [user, setUser] = useAtom(userAtom);
   const navigate = useNavigate();
 
@@ -40,17 +40,17 @@ const CreateProductForm = ({ addProduct }) => {
       body: JSON.stringify(product),
     })
       .then((response) => response.json())
-      .then((data) => addProduct(data));
-    setProduct({
-      product_name: "",
-      product_category: "",
-      product_image: "",
-      product_description: "",
-      product_price_one_off: "",
-      product_price_subscription: "",
-      product_posted_by_userId: "",
-      userid: user._id,
-    });
+      .then((data) => setProduct({
+        product_name: "",
+        product_category: "",
+        product_image: "",
+        product_description: "",
+        product_price_one_off: "",
+        product_price_subscription: "",
+        product_posted_by_userId: "",
+        userid: user._id,
+      }));
+    
     navigate("/sell")
 
   };
