@@ -106,36 +106,6 @@ const Login = () => {
         </div>
       </div>
     </>
-      // <div>
-      //   <form method="post" onSubmit={handleSubmitLogin}>
-      //       <fieldset>
-      //         <legend>Login</legend>
-      //         <label htmlFor="username">Username</label>
-      //         <input 
-      //         className="inputfield" 
-      //         required 
-      //         type="text"
-      //         placeholder="username"
-      //         name="username" 
-      //         id="username" 
-      //         value={login.username}
-      //         onChange={() => handleChange(event, "username")}
-      //         />
-
-      //         <label htmlFor="password">Password</label>
-      //         <input className="inputfield" 
-      //         required 
-      //         type="text"
-      //         placeholder="password"
-      //         name="password" 
-      //         id="password" 
-      //         value={login.password}
-      //         onChange={() => handleChange(event, "password")}
-      //         />
-      //         <button>Login</button>
-      //       </fieldset>
-      //     </form>
-      //     </div>
     )
 }
 
