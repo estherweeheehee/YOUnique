@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { userAtom } from "../App";
 import { useNavigate } from "react-router-dom";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Switch } from "@headlessui/react";
 
 function classNames(...classes) {
@@ -18,7 +18,10 @@ const Settings = () => {
     useState(false);
 
   if (user?.username === undefined) {
-    navigate("/login");
+    useEffect(() => {
+      navigate("/login");
+    }, [])
+    return;
   }
 
   const [toggleEditDesc, setToggleEditDesc] = useState(false);
