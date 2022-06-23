@@ -42,10 +42,14 @@ const MySales = () => {
 
     return (
       <>
-        <div className="mysales">
-          <h1> my sales</h1>
-
-          <div className="hidden sm:block">
+        <main className="max-w-3xl mx-auto px-4 py-16 sm:px-6 sm:pt-24 sm:pb-32 lg:px-8">
+        <div className="max-w-xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">My Sales</h1>
+          <p className="mt-2 text-sm text-gray-500">
+            View and manage the status of your sales
+           
+          </p>
+          <div className="hidden sm:block mx-auto">
             <nav className="flex space-x-4" aria-label="Tabs">
               {tabs.map((tab) => (
                 <a
@@ -65,7 +69,16 @@ const MySales = () => {
           </div>
         </div>
 
+        <div className="mt-12 space-y-16 sm:mt-16">
         {view === "single" ? <SingleOrder /> : <SubscriptionOrder />}
+          
+        </div>
+      </main>
+
+          
+       
+
+        
       </>
     );
   }
