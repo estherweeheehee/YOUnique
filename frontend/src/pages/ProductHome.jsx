@@ -20,7 +20,7 @@ const ProductHome = () => {
 
   return (
     <>
-        <HeroBanner />
+      <HeroBanner />
       <ProductCategory productdata={bakedGoods} />
       <ProductCategory productdata={jewellery} />
     </>
