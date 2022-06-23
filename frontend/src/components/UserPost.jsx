@@ -11,7 +11,7 @@ function UserPost() {
       .then((data) => setUserPost(data));
   }, []);
 
-  const handleLike = () => {};
+
 
   return (
     <div>
@@ -21,7 +21,7 @@ function UserPost() {
             <p>{display.post}</p>
             <img src={display.Image_url} />
             <br></br>
-            <button onClick={handleLike}>Like</button>
+           
             <p>{moment(display.date).format('DD MMMM YYYY h:mm:ss a')}</p>
           </div>
         );
