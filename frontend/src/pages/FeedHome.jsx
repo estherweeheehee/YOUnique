@@ -10,11 +10,29 @@ const FeedHome = () => {
     const handleChange = (event) => {
         setSearchItem(event.target.value)
       }
+
+      const checkForSpace = (searchItem) => {
+        for (let i = 0; i < searchItem.length; i++) {
+          if (searchItem[i] !== " ") {
+            return true
+          }
+        }
+        return false
+      }
     
       const handleSubmit = (event) => {
         event.preventDefault()
+        if (searchItem === "") {
+          alert("Please enter a search term")
+          return;
+        } else if (!checkForSpace(searchItem)) {
+          alert("Please enter a search term")
+          return;
+        }
+        
         navigate(`/feed/search/${searchItem}`)
         setSearchItem("")
+        
       }
       
   

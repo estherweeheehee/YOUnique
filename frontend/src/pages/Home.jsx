@@ -11,15 +11,28 @@ function Home() {
     setSearchTerm(event.target.value)
   }
 
+  const checkForSpace = (searchTerm) => {
+    for (let i = 0; i < searchTerm.length; i++) {
+      if (searchTerm[i] !== " ") {
+        return true
+      }
+    }
+    return false
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     if (searchTerm === "") {
-      console.log("nothing")
+      
+      alert("Please enter a search term")
+      return;
+    } else if (!checkForSpace(searchTerm)) {
       alert("Please enter a search term")
       return;
     }
     navigate(`/search/${searchTerm}`)
     setSearchTerm("")
+    
   }
   
   return(
