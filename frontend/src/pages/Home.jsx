@@ -13,6 +13,11 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    if (searchTerm === "") {
+      console.log("nothing")
+      alert("Please enter a search term")
+      return;
+    }
     navigate(`/search/${searchTerm}`)
     setSearchTerm("")
   }

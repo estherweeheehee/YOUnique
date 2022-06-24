@@ -9,6 +9,7 @@ const Search = () => {
     const lowercaseTerm = term.toLowerCase()
 
     useEffect(() => {
+        
         fetch(`/api/product/search/${lowercaseTerm}`)
           .then((response) => response.json())
           .then((data) => setResults(data));
