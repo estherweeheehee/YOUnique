@@ -32,7 +32,7 @@ function Feed() {
     <div className="bg-white px-4 py-5 sm:px-6">
       {userFeed.map((para,index) => {
         return (
-          <div className="flex space-x-3" key={index}>
+          <div className="flex space-x-3 feedbox" key={index}>
             <div className="flex-shrink-0">
               <UserImageFeedComponent para={para.userid} />
             </div>
@@ -42,14 +42,19 @@ function Feed() {
                   <UserFeedComponents para={para.userid} />
                 </Link>
               </p>
+              <br/>
               <p className="text-md text-black">{para.post}</p>
+              <br/>
               <img src={para.Image_url} alt="" className="h-25 w-" />
+              <br/>
               <p className="text-sm text-gray-500">
                 <a href="#" className="hover:underline">
-                  {moment(para.date).format('DD MMMM YYYY, h:mm:ss a')}
+                  Posted on: {moment(para.date).format('DD MMMM YYYY, h:mm:ss a')}
                 </a>
               </p>
+              <br/>
             </div>
+            
             <div className="flex-shrink-0 self-center flex">
             
             </div>
