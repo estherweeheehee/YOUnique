@@ -57,18 +57,21 @@ function EditForm({ singlePost, post, setEdit, setPost }) {
   }
   return (
     <div>
-      <input
+      <input 
+        className="editpostinput"
         onChange={(event) => setUpdatePost(event.target.value)}
         value={updatePost}
       />
-      <button onClick={handleEditPost}>Change Text</button>
+      <button className="relative inline-flex items-center ml-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleEditPost}>Change Text</button>
+      <br/>
       <input
-        
+        className="editpostinput"
         value={updateImg}
         onChange={(event) => setUpdateImg(event.target.value)}
       />
-      <button onClick={handleEditImg}>Change Image</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <button className="relative inline-flex items-center ml-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleEditImg}>Change Image</button>
+      <br />
+      <button className="relative inline-flex items-center ml-2 mt-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={handleCancel}>Cancel Edit</button>
     </div>
   );
 }

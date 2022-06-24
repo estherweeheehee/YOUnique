@@ -31,7 +31,7 @@ const Post = () => {
       navigate("/login");
     })
     return;
-  } else {
+  } 
     //? Fetch
     useEffect(() => {
       fetch(`/api/feed/${user._id}`)
@@ -51,7 +51,8 @@ const Post = () => {
     };
 
     return (
-      <div className="container">
+      <>
+       {/* <div className="container"> */}
         <div className="bg-white px-4 py-5 sm:px-6">
           <div className="flex space-x-3">
             <div className="flex-shrink-0">
@@ -64,7 +65,7 @@ const Post = () => {
             </div>
             <div className="min-w-0 flex-1">
               <div className="text-base font-medium text-gray-900">
-                <div className="hover:underline">
+                <div >
                   <PostComponent setPost={setPost} post={post} />
                 </div>
               </div>
@@ -74,21 +75,23 @@ const Post = () => {
         {/* BREAK */}
         {post.map((singlePost, index) => {
           return <div key={index}>
-  <div className="bg-white px-4 py-5 sm:px-6">
+  <div className="bg-white px-4 py-5 sm:px-6 postcontents">
           <div className="flex space-x-3">
             <div className="min-w-0 flex-1">
-              <div className="text-sm font-medium text-gray-900">
-                <div  className="hover:underline">
+              <div>
+                <div>
                 {edit === singlePost._id ? <EditForm singlePost={singlePost} post={post} setPost={setPost} setEdit={setEdit} /> : <p>{singlePost.post}</p>}
                 </div>
               </div>
+              <br/>
               <p className="text-sm text-gray-500">
               <img src={singlePost.Image_url} alt="" />
               </p>
-              <p className="text-sm text-gray-500">
-                <a href="#" className="hover:underline">
-                  {moment(singlePost.date).format('DD MMMM YYYY, h:mm:ss a')}
-                </a>
+              <br/>
+              <p>
+                
+                  Posted on: {moment(singlePost.date).format('DD MMMM YYYY, h:mm:ss a')}
+                
               </p>
             </div>
             <div className="flex-shrink-0 self-center flex">
@@ -158,10 +161,10 @@ const Post = () => {
         </div>
           </div>;
         })}
+      </>
       
-      </div>
     );
-  }
+  
 };
 
 {

@@ -58,6 +58,7 @@ function Post({setPost, post}) {
           <input className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Whats on your mind?" type="text"   required name="post" id="post" value={newPost.post} onChange={() => handleChange(event, "post")}/>
           <label htmlFor="image">Image</label>
           <input className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Wanna link an image?" type="text"  name="image" id="image" value={newPost.Image_url} onChange={() => handleChange(event, "Image_url")}/>
+          <br />
           <button className="rounded-full bg-indigo-500 text-white" >Upload Post</button>
         </fieldset>
       </form>
