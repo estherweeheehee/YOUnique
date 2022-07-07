@@ -27,10 +27,9 @@ const Signup = () => {
   const useDefault = () => {
     setSignUp({
       ...signUp,
-      display_pic_url:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
-    });
-  };
+      display_pic_url: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
+    })
+  }
 
   const handleSubmitSignup = (event) => {
     event.preventDefault();
@@ -50,7 +49,7 @@ const Signup = () => {
           navigate("/login");
         } else {
           setUser(data);
-          console.log(data);
+          console.log(data)
           navigate("/");
         }
       });
@@ -58,7 +57,7 @@ const Signup = () => {
 
   return (
     <>
-      {/* logo plus wording */}
+    {/* logo plus wording */}
       <div className="min-h-full flex flex-col justify-center py-8 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
@@ -66,26 +65,16 @@ const Signup = () => {
             src="https://i.imgur.com/4fZaiaq.png"
             alt="Workflow"
           />
-          <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">
-            Sign up a new account
-          </h2>
+          <h2 className="mt-4 text-center text-3xl font-extrabold text-gray-900">Sign up a new account</h2>
         </div>
 
         {/* user name & password */}
         <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-md">
           <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-            <form
-              className="space-y-6"
-              action="#"
-              method="POST"
-              onSubmit={handleSubmitSignup}
-            >
-              <div className="grid grid-cols-6 gap-6">
+            <form className="space-y-6" action="#" method="POST" onSubmit={handleSubmitSignup}>
+            <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="username"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="username" className="block text-sm font-medium text-gray-700">
                     Username
                   </label>
                   <input
@@ -99,10 +88,7 @@ const Signup = () => {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="password"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
                     Password
                   </label>
                   <input
@@ -118,10 +104,7 @@ const Signup = () => {
 
               {/* email */}
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Email address
                 </label>
                 <div className="mt-1">
@@ -136,14 +119,11 @@ const Signup = () => {
                   />
                 </div>
               </div>
-
+              
               {/* Name */}
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="first-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
                     First name
                   </label>
                   <input
@@ -158,10 +138,7 @@ const Signup = () => {
                 </div>
 
                 <div className="col-span-6 sm:col-span-3">
-                  <label
-                    htmlFor="last-name"
-                    className="block text-sm font-medium text-gray-700"
-                  >
+                  <label htmlFor="last-name" className="block text-sm font-medium text-gray-700">
                     Last name
                   </label>
                   <input
@@ -178,19 +155,11 @@ const Signup = () => {
 
               {/* display picture */}
               <div>
-                <label
-                  htmlFor="userpicture"
-                  className="flex text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="userpicture" className="flex text-sm font-medium text-gray-700">
                   Display picture URL
-                  <p
-                    className="mx-2 mb-1 text-xs text-white font-medium bg-indigo-600 px-2 py-1 w-max rounded-md"
-                    onClick={useDefault}
-                  >
-                    Click to use default image
-                  </p>
+                  <p className="mx-2 mb-1 text-xs text-white font-medium bg-indigo-600 px-2 py-1 w-max rounded-md" onClick={useDefault}>Click to use default image</p>
                 </label>
-
+                
                 <div className="mt-1">
                   <input
                     id="userpicture"
@@ -202,14 +171,12 @@ const Signup = () => {
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+                
               </div>
 
               {/* display picture */}
               <div>
-                <label
-                  htmlFor="profiledescription"
-                  className="block text-sm font-medium text-gray-700"
-                >
+                <label htmlFor="profiledescription" className="block text-sm font-medium text-gray-700">
                   Profile Description
                 </label>
                 <div className="mt-1">
